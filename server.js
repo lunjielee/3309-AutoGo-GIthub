@@ -15,72 +15,75 @@ app.use(express.static('build'))// @lil explain!
 // Not used
 app.use(cookieParser("D7C84966-88F9-4BF7-8805-9FBADDFAAA9F"))
 
-
-// app.get('/api/get_result_list', function (req, res) {
-//     conn = newConnection();
-//     conn.connect();
-
-//     conn.query("SELECT * FROM Appointments", (err, result) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.send(result);
-//         }
-//     })
-// })
-
-
 // app.post('/api/submit_result', function (req, res) {
 //     console.log(req.body)
 //     conn = newConnection();
 //     conn.connect();
-//     // Question mark to added up another layer of security
-//     conn.query("INSERT INTO Appointments VALUES (?,?,?,?,?,?,?,?,?,?,?)", [req.body.name.toString(), req.body.option89.toString(), req.body.option910.toString(),
-//     req.body.option1011.toString(), req.body.option1112.toString(), req.body.option1213.toString(),
-//     req.body.option1314.toString(), req.body.option1415.toString(), req.body.option1516.toString(),
-//     req.body.option1617.toString(), req.body.option1718.toString()]
-//         , (error, rows, fields) => {
-//             if (error) {
-//                 // 1062 Duplicate entry error response from mysql, send 409 means conflict
-//                 if (error.errno == 1062)
-//                     res.sendStatus(409)
-//                 console.log(error);
-//             }
-//             else
-//                 res.send("200 OK");
-//         })
+    // Question mark to added up another layer of security
+    // conn.query("INSERT INTO Appointments VALUES (?,?,?,?,?,?,?,?,?,?,?)", [req.body.name.toString(), req.body.option89.toString(), req.body.option910.toString(),
+    // req.body.option1011.toString(), req.body.option1112.toString(), req.body.option1213.toString(),
+    // req.body.option1314.toString(), req.body.option1415.toString(), req.body.option1516.toString(),
+    // req.body.option1617.toString(), req.body.option1718.toString()]
+    //     , (error, rows, fields) => {
+    //         if (error) {
+    //             // 1062 Duplicate entry error response from mysql, send 409 means conflict
+    //             if (error.errno == 1062)
+    //                 res.sendStatus(409)
+    //             console.log(error);
+    //         }
+    //         else
+    //             res.send("200 OK");
+    //     })
 // })
 
 
-// app.post('/api/update_result', function (req, res) {
-//     // First we check is it an root user who sent this post request
-//     if (req.body.authUser == 'root') {
-//         conn = newConnection();
-//         conn.connect();
-//         // Same question mark as above
-//         conn.query("UPDATE Appointments SET option89=?, option910=?, option1011=?, option1112=?, option1213=?, option1314=?, option1415=?, option1516=?, option1617 =?, option1718 =? WHERE name = ?",
-//             [req.body.option89.toString(), req.body.option910.toString(),
-//             req.body.option1011.toString(), req.body.option1112.toString(), req.body.option1213.toString(),
-//             req.body.option1314.toString(), req.body.option1415.toString(), req.body.option1516.toString(),
-//             req.body.option1617.toString(), req.body.option1718.toString(), req.body.name.toString()]
-//             , (error, rows, fields) => {
-//                 if (error) {
-//                     //Probably never reach this point, too lazy to remove this
-//                     if (error.errno == 1062)
-//                         res.sendStatus(409)
-//                     console.log(error);
-//                 }
-//                 else
-//                     res.send("200 OK");
-//             })
-//     } else {
-//         // If not the root user, forbidden
-//         res.sendStatus(403);
-//     }
-// })
+app.post('/api/staff_signup', function (req, res) 
+{
+    conn = newConnection();
+    conn.connect();
 
+})
 
-app.post('/api/staff_login', function (req, res) {
+app.post('/api/guest_signup', function (req, res) 
+{
+    conn = newConnection();
+    conn.connect();
+
+    if (req.body.signupType == 'guest') 
+    {
+        const userName=req.body.username
+        const password = req.body.password
+        const address = req.body.address
+        const phone = req.body.phone
+
+        // //NULL is for the PK
+        // conn.query("INSERT INTO clients VALUES (?,?,?,?,?)", [NULL,userName,password,address,phone]
+        // ),(error, rows, fields) => 
+        // {
+        //     if(error)
+        //     {
+        //         console.log(error)
+        //     }else
+        //     {
+        //         res.send("200 OK");
+        //     }
+        // }
+
+        conn.query(/*`INSERT INTO Client VALUES (NULL,${userName},${password},${address},${phone})`*/
+        // 'INSERT INTO clients VALUES (?,?,?,?,?)', [NULL,userName,password,address,phone]
+        `INSERT INTO Client values (NULL,'Henry','123','address',5171801935)`
+        ),(error, rows, fields) => 
+        {
+            if(error)
+                console.log(error);
+            else
+                console.log('One Row Inserted');  
+        }
+    }
+})
+
+app.post('/api/staff_login', function (req, res) 
+{
 
     conn = newConnection();
     conn.connect();
@@ -147,7 +150,6 @@ app.get('*', function (request, response) {
     response.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 })
 
-// Listening to the port 8081
 app.listen(8081,(req,res)=>{
     console.log('server is listening on port 8081');
 });
