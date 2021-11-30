@@ -22,9 +22,11 @@ export default function GuestLogin() {
                 pwd: password
             }).then(response => {
                 setAuthKey(response.data)
-                if (currentUser !== "" && response.data === "guest-ok") {
+                if (currentUser !== "" && response.data !== "") {
                     localStorage.setItem("currentUser", currentUser)
-                    navigate('/guest-manage-appointment')
+                    localStorage.setItem("currentUserPhone", response.data.phone)//not sure
+                    console.log(localStorage.currentUserPhone)//testing!
+                    navigate('/guest-home')
                     window.location.reload();
                 } else {
                     alert(authKey);

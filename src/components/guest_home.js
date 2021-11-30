@@ -5,11 +5,11 @@ import Axios from 'axios';
 export default function GuestHome() {
     
     return (
-        <div>Guest Home page</div>,
-        <a>view my appointments</a>,
-        <a>book a appointment</a>,
-        <a>my profile</a>//upate username or password
-
+        <div>Guest Home page<br/>
+            <a href='/guest-view-appointment'>view my appointments</a><br/>
+            <a href=''>book a appointment</a><br/>
+            <a href=''>my profile</a><br/>
+        </div>
     )
 
 }

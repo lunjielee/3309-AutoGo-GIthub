@@ -36,12 +36,32 @@ app.use(cookieParser("D7C84966-88F9-4BF7-8805-9FBADDFAAA9F"))
     //     })
 // })
 
+app.get('/api/guest_view_appointment', function (req, res) 
+{
+    conn = newConnection();
+    conn.connect();
+
+    const userName=req.body.userName
+    const phone = req.body.phone
+
+    conn.query(`SELECT a.appointmentNo, ser.serviceType, ser.serviceDescription, a.date, b.location
+    FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
+    WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='Henry' )   AND a.branchNo = b.branchNo
+    ORDER BY a.date;`),(error, rows, fields) => 
+    {
+        if(error)
+            console.log(error);
+        else     
+            res.send(result); 
+    }
+})
 
 app.post('/api/staff_signup', function (req, res) 
 {
     conn = newConnection();
     conn.connect();
 
+    //TODO
 })
 
 app.post('/api/guest_signup', function (req, res) 
@@ -97,8 +117,8 @@ app.post('/api/staff_login', function (req, res)
                 if (results.length > 0) {
                     res.cookie('user', userName);
                     res.cookie('password', password,{ signed: true, maxAge: 10 * 60 * 1000 });
-                    // Send our auth token
-                    res.send("staff-ok");
+                    // Send the logged in staff data
+                    res.send(results);
                 } else {
                     res.send('Incorrect Username and/or Password!');
                 }			
