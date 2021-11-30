@@ -4,6 +4,18 @@ import Axios from 'axios';
 
 export default function GuestViewAppointment(){
 
+    const a_style ={
+        backgroundColor: "black",
+        color:"white",
+        textDecoration: "none",
+        padding: "10px",
+        borderRadius: "10px",
+    }
+
+    const a_div_style={
+        margin:"20px",
+    }
+
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
     const [resultList, setResultList] = useState([]);
 
@@ -19,7 +31,9 @@ export default function GuestViewAppointment(){
     return(
         <div>
             <h1>Guest View Appointment Page</h1>
-            <a href='/guest-home'>Back to Home Page</a><br/>
+            <div style={a_div_style}>
+                <a href='/guest-home' style={a_style}>Back to Guest Home Page</a><br/>
+            </div>
             <button onClick={getResultList}>Show Appointments</button>
 
             {resultList.map((val) => {

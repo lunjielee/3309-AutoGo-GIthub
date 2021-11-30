@@ -46,7 +46,7 @@ app.get('/api/guest_view_appointment', function (req, res)
 
     conn.query(`SELECT a.appointmentNo, ser.serviceType, ser.serviceDescription, a.date, b.location
     FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
-    WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='Henry' )   AND a.branchNo = b.branchNo
+    WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='${userName}' )   AND a.branchNo = b.branchNo
     ORDER BY a.date;`),(error, rows, fields) => 
     {
         if(error)
