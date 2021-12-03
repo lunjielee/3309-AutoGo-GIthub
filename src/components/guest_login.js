@@ -28,7 +28,8 @@ export default function GuestLogin() {
                     console.log(localStorage.currentUserPhone)//testing!
                     navigate('/guest-home')
                     window.location.reload();
-                } else {
+                } 
+                else {
                     alert(authKey);
                 }
             })

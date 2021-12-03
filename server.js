@@ -36,6 +36,11 @@ app.use(cookieParser("D7C84966-88F9-4BF7-8805-9FBADDFAAA9F"))
     //     })
 // })
 
+app.get('/api/staff_view_appointment', function (req, res) 
+{
+
+})
+
 app.get('/api/guest_view_appointment', function (req, res) 
 {
     conn = newConnection();
@@ -46,8 +51,8 @@ app.get('/api/guest_view_appointment', function (req, res)
 
     conn.query(`SELECT a.appointmentNo, ser.serviceType, ser.serviceDescription, a.date, b.location
     FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
-    WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='${userName}' )   AND a.branchNo = b.branchNo
-    ORDER BY a.date;`),(error, rows, fields) => 
+    WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='Henry' )   AND a.branchNo = b.branchNo
+    ORDER BY a.date;`),(error, result) => 
     {
         if(error)
             console.log(error);
@@ -62,6 +67,26 @@ app.post('/api/staff_signup', function (req, res)
     conn.connect();
 
     //TODO
+    if (req.body.signupType == 'staff') 
+    {
+        const username=req.body.username
+        const password = req.body.password
+        const position = req.body.position
+        const branchNo = req.body.branchNo
+
+        //NULL is for the PK in clients table
+        conn.query("INSERT INTO staffs VALUES (?,?,?,?,?)", [NULL,username,password,position,branchNo]
+        ),(error, rows, fields) => 
+        {
+            if(error)
+            {
+                console.log(error)
+            }else
+            {
+                res.send("200 OK");
+            }
+        }
+    }
 })
 
 app.post('/api/guest_signup', function (req, res) 
@@ -69,42 +94,41 @@ app.post('/api/guest_signup', function (req, res)
     conn = newConnection();
     conn.connect();
 
+    //TODO
     if (req.body.signupType == 'guest') 
     {
-        const userName=req.body.username
+        const username=req.body.username
         const password = req.body.password
         const address = req.body.address
         const phone = req.body.phone
 
-        // //NULL is for the PK
-        // conn.query("INSERT INTO clients VALUES (?,?,?,?,?)", [NULL,userName,password,address,phone]
-        // ),(error, rows, fields) => 
-        // {
-        //     if(error)
-        //     {
-        //         console.log(error)
-        //     }else
-        //     {
-        //         res.send("200 OK");
-        //     }
-        // }
-
-        conn.query(/*`INSERT INTO Client VALUES (NULL,${userName},${password},${address},${phone})`*/
-        // 'INSERT INTO clients VALUES (?,?,?,?,?)', [NULL,userName,password,address,phone]
-        `INSERT INTO Client values (NULL,'Henry','123','address',5171801935)`
+        //NULL is for the PK in clients table
+        conn.query("INSERT INTO clients VALUES (?,?,?,?,?)", [NULL,username,password,address,phone]
         ),(error, rows, fields) => 
         {
             if(error)
-                console.log(error);
-            else
-                console.log('One Row Inserted');  
+            {
+                console.log(error)
+            }else
+            {
+                res.send("200 OK");
+            }
         }
+
+        // conn.query(
+        // `INSERT INTO Client values (NULL,'Henry','123','address',5171801935)`
+        // ),(error, rows, fields) => 
+        // {
+        //     if(error)
+        //         console.log(error);
+        //     else
+        //         console.log('One Row Inserted');  
+        // }
     }
 })
 
 app.post('/api/staff_login', function (req, res) 
 {
-
     conn = newConnection();
     conn.connect();
 

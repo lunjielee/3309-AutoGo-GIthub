@@ -11,7 +11,6 @@ export default class Home extends Component {
                                 Welcome to <small class="text-muted">AutoGo</small>
                             </h1>
                             <p class="lead">Make meetings happen, generate client bookings, and manage your schedule — all with Doodle Premium.</p>
-                            <a href="../../../public/img/Games-Road-Trip-Road96-1.jpeg"></a>
                         </div>
                     </div>
                 </div>

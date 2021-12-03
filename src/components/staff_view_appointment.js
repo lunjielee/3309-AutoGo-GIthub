@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
-export default function GuestViewAppointment(){
+export default function StaffViewAppointment(){
 
     const a_style ={
         backgroundColor: "black",
@@ -20,9 +20,9 @@ export default function GuestViewAppointment(){
     const [resultList, setResultList] = useState([]);
 
     const getResultList = () => {
-        Axios.post(`http://${API_DOMAIN}:8081/api/guest_view_appointment`, {
-                    userName:localStorage.currentUserPhone,
-                    phone:localStorage.currentUserPhone
+        console.log(localStorage.currentUser);
+        Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_appointment`, {
+                    userName:localStorage.currentUser
                 }).then(response => {
                     setResultList(response.data)
                 })
@@ -30,9 +30,9 @@ export default function GuestViewAppointment(){
 
     return(
         <div>
-            <h1>Guest View Appointment Page</h1>
+            <h1>Staff View Appointment Page</h1>
             <div style={a_div_style}>
-                <a href='/guest-home' style={a_style}>Back to Guest Home Page</a><br/>
+                <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br/>
             </div>
             <button onClick={getResultList}>Show Appointments</button>
 

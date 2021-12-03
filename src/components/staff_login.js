@@ -14,7 +14,7 @@ export default function StaffLogin() {
 
     //Login function
     const staffLogin = () => {
-        if (currentUser !== "" && password!=='') {
+        if (currentUser !== "" && password!=="") {
             // Using Axios to send post request to our backend
             Axios.post(`http://${API_DOMAIN}:8081/api/staff_login`, {
                 loginType: 'staff',
@@ -22,9 +22,9 @@ export default function StaffLogin() {
                 pwd: password
             }).then(response => {
                 setAuthKey(response.data)
-                if (currentUser !== "" && response.data === "staff-ok") {
+                if (currentUser !== "" && response.data !== "") {
                     localStorage.setItem("currentUser", currentUser)
-                    navigate('/staff-manage-appointment')
+                    navigate('/staff-home')
                     window.location.reload();
                 } else {
                     alert(authKey);

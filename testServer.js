@@ -13,7 +13,7 @@ conn.connect();
 //             })
 let clientNo =2;
 let clientName='Henry';//we only save the name in the browser currently
-let phone = localStorage.currentUserPhone;
+let phone = '5117011905';
 
 conn.query(`SELECT a.appointmentNo, ser.serviceType, ser.serviceDescription, a.date, b.location
             FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
