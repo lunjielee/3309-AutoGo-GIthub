@@ -24,6 +24,17 @@ export default function GuestViewAppointment() {
         })
     }
 
+    const deleteAppointment = () => {
+        // Using Axios to send post request to our backend
+        Axios.post(`http://${API_DOMAIN}:8081/api/guest_delete_appointment`, {
+            appointmentNo: appointmentNo
+        }).then(response => {
+            console.log(response.data);
+            // window.location.reload();
+            getResultList();
+        })
+    }
+
     const viewReceipt = () => {
         // Using Axios to send post request to our backend
         Axios.post(`http://${API_DOMAIN}:8081/api/guest_view_receipt`, {
