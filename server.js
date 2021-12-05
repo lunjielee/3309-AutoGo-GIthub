@@ -21,11 +21,11 @@ app.post('/api/add_appointment', function (req, res) {
     conn.connect();
 
     const date = req.body.date;
-    const branchNo= parseInt(req.body.branchNo);
+    const branchNo = parseInt(req.body.branchNo);
     const clientNo = req.body.clientNo;
     const licensePlate = req.body.licensePlate;
 
-    conn.query("INSERT INTO appointments VALUES (?,?,?,?,?)", ['NULL', date, branchNo , clientNo, licensePlate],
+    conn.query("INSERT INTO appointments VALUES (?,?,?,?,?)", ['NULL', date, branchNo, clientNo, licensePlate],
         (error, rows, fields) => {
             if (error) {
                 console.log(error);
