@@ -34,13 +34,13 @@ export default function GuestViewAppointment() {
     }
 
     const viewReceipt = () => {
-            // Using Axios to send post request to our backend
-            Axios.post(`http://${API_DOMAIN}:8081/api/guest_view_receipt`, {
-                appointmentNo: appointmentNo
-            }).then(response => {
-                console.log(response.data);
-                setReceiptList(response.data);
-            })
+        // Using Axios to send post request to our backend
+        Axios.post(`http://${API_DOMAIN}:8081/api/guest_view_receipt`, {
+            appointmentNo: appointmentNo
+        }).then(response => {
+            console.log(response.data);
+            setReceiptList(response.data);
+        })
     }
 
     return (

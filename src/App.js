@@ -48,14 +48,14 @@ class App extends Component {
         <div className="container mt-3">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} /> 
+            <Route path="/login" element={<Login />} />
             <Route path="/staff-signup" element={<StaffSignup />} />
             <Route path="/guest-signup" element={<GuestSignup />} />
             <Route path="/guest-home" element={<GuestHome />} />
             <Route path="/staff-home" element={<StaffHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
-            <Route path="/add-appointment" element={<AddAppointment />} /> 
+            <Route path="/add-appointment" element={<AddAppointment />} />
           </Routes>
         </div>
         <footer className="py-3 my-4">
