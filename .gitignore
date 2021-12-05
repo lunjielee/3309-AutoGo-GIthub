@@ -21,4 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 pnpm-lock.yaml
+=======
+pnpm-lock.yaml
+>>>>>>> 9a2009b9 (fking important)
