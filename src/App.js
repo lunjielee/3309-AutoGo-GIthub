@@ -16,7 +16,7 @@ import GuestSignup from './components/guest_signup'
 import GuestViewAppointment from './components/guest_view_appointments';
 import StaffViewAppointment from './components/staff_view_appointment';
 import AddAppointment from './components/guest_add_appointment';
-
+import StaffViewBRevenue from './components/staff_view_branchRevenue';
 class App extends Component {
   render() {
     return (
@@ -59,6 +59,7 @@ class App extends Component {
             <Route path="/staff-home" element={<StaffHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
+            <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />}/>
             <Route path="/add-appointment" element={<AddAppointment />} />
           </Routes>
         </div>
