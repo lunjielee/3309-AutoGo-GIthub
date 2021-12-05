@@ -1,33 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Axios from 'axios';
 
 export default function GuestHome() {
-
-    const a_style = {
-        backgroundColor: "black",
-        color: "white",
-        textDecoration: "none",
-        padding: "10px",
-        borderRadius: "10px",
-    }
-
-    const a_div_style = {
-        margin: "20px",
-    }
-
+    const nav = useNavigate()
     return (
-        <div>Guest Home page<br />
-            <div style={a_div_style}>
-                <a href='/guest-view-appointment' style={a_style}>view my appointments</a>
+        <div>
+            <h1>Guest Home page</h1>
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-view-appointment') }} id='guest-home-btn-1' class="btn btn-primary" type="button">View my appointments</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/add-appointment' style={a_style}>book a appointment</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/add-appointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Book a appointment</button>
             </div>
-            <div style={a_div_style}>
-                <a href='' style={a_style}>my profile</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('#') }} id='guest-home-btn-3' class="btn btn-primary" type="button">View my profile</button>
             </div>
-        </div>
+        </div >
     )
 
 }
