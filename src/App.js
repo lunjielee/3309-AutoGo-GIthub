@@ -9,7 +9,7 @@ import GuestHome from './components/guest_home'
 import StaffHome from './components/staff_home'
 import StaffSignup from './components/staff_signup'
 import GuestSignup from './components/guest_signup'
-import GuestViewAppointment from './components/staff_view_appointment' 
+import GuestViewAppointment from './components/guest_view_appointments';
 import StaffViewAppointment from './components/staff_view_appointment';
 
 class App extends Component {

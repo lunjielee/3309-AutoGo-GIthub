@@ -7,25 +7,29 @@ conn.connect();
 //             (error,rows,fields)=>{
 //             if(error)
 //                 console.log(error);
-            
+
 //             for(r of rows)
 //                 console.log(r);
 //             })
-let clientNo =2;
-let clientName='Henry';//we only save the name in the browser currently
-let phone = '5117011905';
 
-conn.query(`SELECT a.appointmentNo, ser.serviceType, ser.serviceDescription, a.date, b.location
-            FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
-            WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='${clientName}' AND phone=${phone})   AND a.branchNo = b.branchNo
-            ORDER BY a.date;`,
-            (error,rows,fields)=>{
-            if(error)
-                console.log(error);
-            
-            for(r of rows)
-                console.log(r);
-            })
+
+conn.query(`SELECT a.appointmentNo, c.licensePlate ,c.model, c.make, ser.serviceType, ser.serviceDescription, a.date
+            FROM   appointments a, cars c, services ser,  serciveAppointment sa,  appointmentStaff astf
+            WHERE c.licensePlate = a.licensePlate  AND a.appointmentNo = sa.appointmentNo AND ser.serviceType = sa.serviceType 
+                AND a.appointmentNo = astf.appointmentNo AND astf.staffNo=1
+            ORDER BY a.appointmentNo
+            `,
+    (error, rows, fields) => {
+        if (error) { console.log(error); }
+        else {
+            console.log(rows)
+        }
+
+        for (r of rows) {
+            console.log(r);
+        }
+
+    })
 
 
 conn.end();

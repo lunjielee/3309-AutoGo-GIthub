@@ -22,7 +22,8 @@ export default function StaffViewAppointment(){
     const getResultList = () => {
         console.log(localStorage.currentUser);
         Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_appointment`, {
-                    userName:localStorage.currentUser
+                    userName:localStorage.currentUser,
+                    password: localStorage.password
                 }).then(response => {
                     setResultList(response.data)
                 })
@@ -40,11 +41,18 @@ export default function StaffViewAppointment(){
                 console.log(val)
 
                 return <div>
+                        <input value='AppointmentNo' readOnly></input>
+                        <input value='Service Type'readOnly></input>
+                        <input value='Service Description' readOnly></input>
+                        <input value='Date' readOnly></input>
+                        <input value='License Plate'readOnly></input>
+
                         <input value={val.appointmentNo} readOnly></input>
                         <input value={val.serviceType} readOnly></input>
                         <input value={val.serviceDescription} readOnly></input>
+                        <input value={val.date} readOnly></input>
                         <input value={val.date|DataView} readOnly></input>
-                        <input value={val.location} readOnly></input>
+                        <input value={val.licensePlate} readOnly></input>
                 </div>
                 
             })}
