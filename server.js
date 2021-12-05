@@ -16,6 +16,27 @@ app.use(express.static('build'))// @lil explain!
 app.use(cookieParser("D7C84966-88F9-4BF7-8805-9FBADDFAAA9F"))
 
 
+app.post('/api/add_appointment', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const date = req.body.date;
+    const branchNo= parseInt(req.body.branchNo);
+    const clientNo = req.body.clientNo;
+    const licensePlate = req.body.licensePlate;
+
+    conn.query("INSERT INTO appointments VALUES (?,?,?,?,?)", ['NULL', date, branchNo , clientNo, licensePlate],
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                res.send('INSERT Appointment Success');
+            }
+        })
+
+})
+
 app.post('/api/staff_view_appointment', function (req, res) {
     conn = newConnection();
     conn.connect();
@@ -51,6 +72,29 @@ app.post('/api/guest_view_appointment', function (req, res) {
                 FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
                 WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='${userName}' AND password='${password}')   AND a.branchNo = b.branchNo
                 ORDER BY a.date;`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                res.send(rows);
+            }
+
+        })
+})
+
+
+app.post('/api/guest_view_receipt', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const appointmentNo = req.body.appointmentNo
+
+    conn.query(`SELECT a.appointmentNo, c.name as clientName,  a.date, b.location, SUM(ser.price) as totalPayment
+                FROM  services ser, client c, appointments a, branches b, serciveAppointment sa
+                WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo AND a.appointmentNo = ${appointmentNo}  AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
+                GROUP BY a.appointmentNo 
+                ORDER BY a.appointmentNo;`,
         (error, rows, fields) => {
             if (error) {
                 console.log(error);
@@ -154,7 +198,7 @@ app.post('/api/guest_login', function (req, res) {
                     res.cookie('user', userName);
                     res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
                     // Send our auth token
-                    res.send("guest-ok");
+                    res.send(results);
                 } else {
                     res.send('Incorrect Username and/or Password!');
                 }
