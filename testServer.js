@@ -7,25 +7,25 @@ conn.connect();
 //             (error,rows,fields)=>{
 //             if(error)
 //                 console.log(error);
-            
+
 //             for(r of rows)
 //                 console.log(r);
 //             })
-let clientNo =2;
-let clientName='Henry';//we only save the name in the browser currently
-let phone = '5117011905';
 
-conn.query(`SELECT a.appointmentNo, ser.serviceType, ser.serviceDescription, a.date, b.location
-            FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
-            WHERE  ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo  AND a.clientNo = c.clientNo   AND a.clientNo = (SELECT clientNo FROM clients WHERE name='${clientName}' AND phone=${phone})   AND a.branchNo = b.branchNo
-            ORDER BY a.date;`,
-            (error,rows,fields)=>{
-            if(error)
-                console.log(error);
-            
-            for(r of rows)
-                console.log(r);
-            })
 
+let branchNo = 1;
+let clientNo = 1;
+let date = '2021-08-20 10:00:00';
+let service1='car wash';
+const thisAppointmentNo = `SELECT appointmentNo FROM appointments WHERE date='${date}' AND branchNO=${branchNo} AND clientNo=${clientNo}`;
+
+conn.query(`INSERT INTO serciveappointment VALUES('${service1}',(${thisAppointmentNo}))`
+    ,
+    (error, rows, fields) => {
+        if (error) { console.log(error); }
+        else {
+            console.log('INSERT SUCCESS')
+        }
+    })
 
 conn.end();
