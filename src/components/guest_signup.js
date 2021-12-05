@@ -35,7 +35,10 @@ export default function GuestSingup() {
     return(
         <div>guest signup page</div>,
 
-        <form>
+
+        <div className="signup_con">
+
+        <form className="signup_form">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input onChange={(event) => { setUsername(event.target.value) }} class="form-control" id="username" required/>
@@ -58,6 +61,8 @@ export default function GuestSingup() {
 
             <button onClick={guestSignup} type="submit" class="btn btn-primary">Signup As Guest</button>
         </form> 
+        </div>
+    
     )
     
 }
