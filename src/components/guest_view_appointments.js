@@ -1,23 +1,14 @@
 import React, { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
 export default function GuestViewAppointment() {
-
-    const a_style = {
-        backgroundColor: "black",
-        color: "white",
-        textDecoration: "none",
-        padding: "10px",
-        borderRadius: "10px",
-    }
-
-    const a_div_style = {
-        margin: "20px",
-    }
-
     const [appointmentNo, setAppointmentNo] = useState("");
     const [resultList, setResultList] = useState([]);
     const [receiptList, setReceiptList] = useState([]);
+
+    const nav = useNavigate()
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
@@ -46,50 +37,62 @@ export default function GuestViewAppointment() {
     return (
         <div>
             <h1>Guest View Appointment Page</h1>
-            <div style={a_div_style}>
-                <a href='/guest-home' style={a_style}>Back to Guest Home Page</a><br />
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-home') }} id='guest-view-btn-1' class="btn btn-primary" type="button">Back to Guest Home Page</button>
             </div>
-            <br></br>
-            <button onClick={getResultList}>Show Appointments</button>
-            <br></br>
-            <input value='AppointmentNo' readOnly></input>
-            <input value='Service Type' readOnly></input>
-            <input value='Service Description' readOnly></input>
-            <input value='Date' readOnly></input>
-            <input value='Location' readOnly></input>
-            <br></br>
-            {resultList.map((val) => {
-                return <div>
-                    <input value={val.appointmentNo} readOnly></input>
-                    <input value={val.serviceType} readOnly></input>
-                    <input value={val.serviceDescription} readOnly></input>
-                    <input value={val.date} readOnly></input>
-                    <input value={val.location} readOnly></input>
+            <div class="mt-3">
+                <button onClick={getResultList} id='guest-view-btn-2' class="btn btn-primary" type="button">Show Appointments</button>
+            </div>
+            <div class="mt-3">
+                <div>
+                    <div class="row">
+                        <div class="border border-primary col">AppointmentNo</div>
+                        <div class="border border-primary col">Service Type</div>
+                        <div class="border border-primary col">Service Description</div>
+                        <div class="border border-primary col">Date</div>
+                        <div class="border border-primary col">Location</div>
+                    </div>
+                    {resultList.map((val) => {
+                        return <div class="row">
+                            <div class="border col">{val.appointmentNo}</div>
+                            <div class="border col">{val.serviceType}</div>
+                            <div class="border col">{val.serviceDescription}</div>
+                            <div class="border col">{val.date}</div>
+                            <div class="border col">{val.location}</div>
+                        </div>
+                    })}
                 </div>
-            })}
-            <br></br>
-            <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in the appointment number to view the payment"></input>
-            <button onClick={viewReceipt}>View Receipt</button>
-            <br></br>
-            <input value='AppointmentNo' readOnly></input>
-            <input value='Client' readOnly></input>
-            <input value='Date' readOnly></input>
-            <input value='Location' readOnly></input>
-            <input value='Price' readOnly></input>
-            <br></br>
-            {receiptList.map((val) => {
-                console.log(val)
-
-                return <div>
-                    <input value={val.appointmentNo} readOnly></input>
-                    <input value={val.clientName} readOnly></input>
-                    <input value={val.date} readOnly></input>
-                    <input value={val.location} readOnly></input>
-                    <input value={val.totalPayment} readOnly></input>
+            </div>
+            <div class="mt-3">
+                <div class="form-floating mb-3">
+                    <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' type="text" class="form-control" id="inputUserNameStaff"
+                        placeholder="Type in the appointment number to view the payment" required />
+                    <label for="inputUserName" class="form-label">Appointment Number</label>
                 </div>
-            })}
+                <div class="mt-3">
+                    <button onClick={viewReceipt} id='guest-view-btn-3' class="btn btn-primary">View Receipt</button>
+                </div>
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="border border-primary col">AppointmentNo</div>
+                        <div class="border border-primary col">Client</div>
+                        <div class="border border-primary col">Date</div>
+                        <div class="border border-primary col">Location</div>
+                        <div class="border border-primary col">Price</div>
+                    </div>
+                    {receiptList.map((val) => {
+                        console.log(val)
+                        return <div class="row">
+                            <div class="border col">{val.appointmentNo}</div>
+                            <div class="border col">{val.clientName}</div>
+                            <div class="border col">{val.date} </div>
+                            <div class="border col">{val.location}</div>
+                            <div class="border col">{val.totalPayment}</div>
+                        </div>
+                    })}
+                </div>
 
-
+            </div>
         </div>
     )
 }
