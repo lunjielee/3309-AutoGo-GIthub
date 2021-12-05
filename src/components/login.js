@@ -76,7 +76,7 @@ export default function Login() {
                     </div>
                     <div class="position-relative">
                         <div class="position-absolute top-0 end-0">
-                            <button onClick={staffLogin} id='staff-login-btn' class="btn btn-dark" type="button">Log In As Staff</button>
+                            <button onClick={staffLogin} id='staff-login-btn' class="btn btn-primary" type="button">Log In As Staff</button>
                         </div>
                     </div>
                 </form>
@@ -96,7 +96,7 @@ export default function Login() {
                     </div>
                     <div class="position-relative">
                         <div class="position-absolute top-0 end-0">
-                            <button onClick={guestLogin} id='guest-login-btn' class="btn btn-dark" type="button">Log In As Guest</button>
+                            <button onClick={guestLogin} id='guest-login-btn' class="btn btn-primary" type="button">Log In As Guest</button>
                         </div>
                     </div>
                 </form>
