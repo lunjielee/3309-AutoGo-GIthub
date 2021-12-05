@@ -19,12 +19,12 @@ export default function AddAppointment() {
     //React hooks
     const [date, setDate] = useState("");
     const [branchNo, setBranchNo] = useState("1");
-    const [clientNo, setClientNo] = useState("");
     const [licensePlate, setLicensePlate] = useState("");
+    const [service1, setService1] = useState("car wash");
+    const [service2, setService2] = useState("none");
+    const [service3, setService3] = useState("none");
+    const [service4, setService4] = useState("none");
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
-
-    //For navigate between pages
-    let navigate = useNavigate();
 
     //Login function
     const submitAppointment = () => {
@@ -36,7 +36,11 @@ export default function AddAppointment() {
                 branchNo: branchNo,
                 clientNo: localStorage.getItem('clientNo'),
                 branchNo: branchNo,
-                licensePlate: licensePlate
+                licensePlate: licensePlate,
+                service1: service1, //pass into serviceAppointment table
+                service2: service2, //pass into serviceAppointment table
+                service3: service3, //pass into serviceAppointment table
+                service4: service4 //pass into serviceAppointment table
             }).then(response => {
                 console.log(response)
                 window.location.reload();
@@ -57,6 +61,47 @@ export default function AddAppointment() {
                 </div>
 
                 <div class="mb-3">
+                    <label for="service" class="form-label">Service 1</label>
+                    <select name="service" id="service" onChange={(event) => { setService1(event.target.value) }}>
+                        <option value="car wash">car wash</option>
+                        <option value="inspection">inspection</option>
+                        <option value="maintenance">maintenance</option>
+                        <option value="tire change">tire change</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="service" class="form-label">Service 2</label>
+                    <select name="service" id="service" onChange={(event) => { setService2(event.target.value) }}>
+                        <option value="none">none</option>
+                        <option value="car wash">car wash</option>
+                        <option value="inspection">inspection</option>
+                        <option value="maintenance">maintenance</option>
+                        <option value="tire change">tire change</option>
+
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="service" class="form-label">Service 3</label>
+                    <select name="service" id="service" onChange={(event) => { setService3(event.target.value) }}>
+                        <option value="none">none</option>
+                        <option value="car wash">car wash</option>
+                        <option value="inspection">inspection</option>
+                        <option value="maintenance">maintenance</option>
+                        <option value="tire change">tire change</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="service" class="form-label">Service 4</label>
+                    <select name="service" id="service" onChange={(event) => { setService4(event.target.value) }}>
+                        <option value="none">none</option>
+                        <option value="car wash">car wash</option>
+                        <option value="inspection">inspection</option>
+                        <option value="maintenance">maintenance</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Date</label>
                     <select name="location" id="location" onChange={(event) => { setBranchNo(event.target.value) }}>
                         <option value="1">wonderland road 101</option>
                         <option value="2">western road 100</option>

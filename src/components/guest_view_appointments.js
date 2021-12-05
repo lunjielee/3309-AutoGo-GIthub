@@ -33,14 +33,25 @@ export default function GuestViewAppointment() {
         })
     }
 
+    const deleteAppointment = () => {
+        // Using Axios to send post request to our backend
+        Axios.post(`http://${API_DOMAIN}:8081/api/guest_delete_appointment`, {
+            appointmentNo: appointmentNo
+        }).then(response => {
+            console.log(response.data);
+            // window.location.reload();
+            getResultList();
+        })
+    }
+
     const viewReceipt = () => {
-            // Using Axios to send post request to our backend
-            Axios.post(`http://${API_DOMAIN}:8081/api/guest_view_receipt`, {
-                appointmentNo: appointmentNo
-            }).then(response => {
-                console.log(response.data);
-                setReceiptList(response.data);
-            })
+        // Using Axios to send post request to our backend
+        Axios.post(`http://${API_DOMAIN}:8081/api/guest_view_receipt`, {
+            appointmentNo: appointmentNo
+        }).then(response => {
+            console.log(response.data);
+            setReceiptList(response.data);
+        })
     }
 
     return (
@@ -67,8 +78,14 @@ export default function GuestViewAppointment() {
                     <input value={val.location} readOnly></input>
                 </div>
             })}
+
             <br></br>
-            <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in the appointment number to view the payment"></input>
+            <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in appointmentNo"></input>
+            <button onClick={deleteAppointment}>Delete Appointment</button>
+            <br></br>
+
+            <br></br>
+            <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in appointmentNo"></input>
             <button onClick={viewReceipt}>View Receipt</button>
             <br></br>
             <input value='AppointmentNo' readOnly></input>
@@ -79,7 +96,6 @@ export default function GuestViewAppointment() {
             <br></br>
             {receiptList.map((val) => {
                 console.log(val)
-
                 return <div>
                     <input value={val.appointmentNo} readOnly></input>
                     <input value={val.clientName} readOnly></input>
@@ -88,7 +104,6 @@ export default function GuestViewAppointment() {
                     <input value={val.totalPayment} readOnly></input>
                 </div>
             })}
-
 
         </div>
     )
