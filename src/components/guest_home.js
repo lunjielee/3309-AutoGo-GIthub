@@ -7,16 +7,16 @@ export default function GuestHome() {
         <div>
             <h1>Guest Home page</h1>
             <div class="mt-3">
-                <button onClick={() => { nav('/guest-view-appointment') }} id='guest-home-btn-1' class="btn btn-primary" type="button">View my appointments</button>
+                <button onClick={() => { nav('/guest-view-appointment') }} id='guest-home-btn-1' class="btn btn-primary" type="button">View My Appointments</button>
             </div>
             <div class="mt-3">
-                <button onClick={() => { nav('/add-appointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Book a appointment</button>
+                <button onClick={() => { nav('/add-appointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Book a Appointment</button>
             </div>
             <div class="mt-3">
-                <button onClick={() => { nav('#') }} id='guest-home-btn-3' class="btn btn-primary" type="button">View my profile</button>
+                <button onClick={() => { nav('#') }} id='guest-home-btn-3' class="btn btn-primary" type="button">View My Profile</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/guest-find-item' style={a_style}>Find Locations</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-find-item') }} id='guest-home-btn-4' class="btn btn-primary" type="button">Find Accessory Locations</button>
             </div>
         </div>
     )

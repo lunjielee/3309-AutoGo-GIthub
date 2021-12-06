@@ -32,12 +32,13 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.col {
+.colWithBackground {
   height: 725px;
   width: 100%;
   background-image: url(back.png);
