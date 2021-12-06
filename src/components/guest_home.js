@@ -19,13 +19,13 @@ export default function GuestHome() {
     return (
         <div>Guest Home page<br />
             <div style={a_div_style}>
+                <a href='/guest-show-profile' style={a_style}>my profile</a>
+            </div>
+            <div style={a_div_style}>
                 <a href='/guest-view-appointment' style={a_style}>view my appointments</a>
             </div>
             <div style={a_div_style}>
                 <a href='/add-appointment' style={a_style}>book a appointment</a>
-            </div>
-            <div style={a_div_style}>
-                <a href='' style={a_style}>my profile</a>
             </div>
             <div style={a_div_style}>
                 <a href='/guest-find-item' style={a_style}>Find Locations</a>

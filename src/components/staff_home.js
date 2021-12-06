@@ -20,9 +20,6 @@ export default function StaffHome() {
                 <a href='/staff-view-appointment' style={a_style}>view my appointments</a>
             </div>
             <div style={a_div_style}>
-                <a href='' style={a_style}>my profile</a>
-            </div>
-            <div style={a_div_style}>
                 <a href='/staff-view-branchRevenue' style={a_style}>View Branch Reveneue</a>
             </div>
         </div>

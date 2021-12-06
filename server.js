@@ -150,6 +150,22 @@ app.post('/api/staff_view_appointment', function (req, res) {
         })
 })
 
+app.post('/api/guest_show_profile', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const clientNo = req.body.clientNo
+
+    conn.query(`SELECT * FROM clients Where clientNo='${clientNo}'`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            } else {
+                res.send(rows);
+            }
+        })
+})
+
 app.post('/api/guest_find_item', function (req, res) {
     conn = newConnection();
     conn.connect();

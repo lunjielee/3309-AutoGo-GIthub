@@ -37,7 +37,7 @@ export default function GuestShowBranchAppointment() {
         <div>
             <h1>Show Branch Appointment Of Each Car</h1>
             <div style={a_div_style}>
-                <a href='/staff-home' style={a_style}>Back to Staff Home</a>
+                <a href='/guest-home' style={a_style}>Back to Staff Home</a>
             </div>
             <input onChange={(event)=> {setBranchNo(event.target.value)}} id='branchNo' placeholder='Branch No'></input><br/>
 
