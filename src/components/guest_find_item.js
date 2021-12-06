@@ -24,8 +24,9 @@ export default function GuestFindItem() {
         console.log(localStorage.currentUser);
         Axios.post(`http://${API_DOMAIN}:8081/api/guest_find_item`, {
             itemNo: itemNo
+
         }).then(response => {
-            console.log(response.data)
+            console.log(response.data);
             setItemList(response.data);
         })
     }
@@ -41,6 +42,7 @@ export default function GuestFindItem() {
             <label for='item'>Enter item name: </label><br/>
             <input onChange={(event)=>{setItemNo(event.target.value)}} id='item' placeholder='Type in item name'/>
             <button onClick={getItemList}>Show Item Locations</button><br />
+            
             <br></br>
             <input value='Item' readOnly></input>
             <input value='Price' readOnly></input>

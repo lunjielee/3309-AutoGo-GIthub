@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
-
 
 export default function StaffViewBranchRevenue() {
 
@@ -18,18 +16,21 @@ export default function StaffViewBranchRevenue() {
     }
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
-    const [resultList, setResultList] = useState([]);
+
     const [dateFrom, setDateFrom]=useState("");
+    const [dateTo, setDateTo]=useState("");
+    const [dateList, setDateList]=useState([]);
     
 
-    const getResultList = () => {
+    const getDateList = () => {
         console.log(localStorage.currentUser);
         Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_branchRevenue`, {
-            userName: localStorage.currentUser,
-            password: localStorage.password,
+            dateFrom: dateFrom,
+            dateTo: dateTo
 
         }).then(response => {
-            setResultList(response.data)
+            console.log(response.data);
+            setDateList(response.data);
         })
     }
 
@@ -40,16 +41,16 @@ export default function StaffViewBranchRevenue() {
                 <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
             </div>
             <label for='dateFrom'>Date From: </label>
-            <input id='dateFrom' name='dateFrom' rows="1" cols="20" ></input><br/>
-
+            <input onChange={(event)=>{setDateFrom(event.target.value)}} id='dateFrom' placeholder='Date From'></input><br/>
+            
             <label for='dateTo'>Date To: </label>
-            <textarea id='dateTo' name='dateTo' rows="1" cols="20"></textarea><br/>
+            <input onChange={(event=>{setDateTo(event.target.value)})} id='dateTo' placeholder='Date To'></input><br/>
 
-            <button onClick={getResultList}>Show Branch</button>
+            <button onClick={getDateList}>Show Branch</button>
             <div>Follow this format: 2021-08-20 10:00:00</div>
 
 
-            {resultList.map((val) => {
+            {dateList.map((val) => {
                 console.log(val)
 
                 return <div>

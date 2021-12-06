@@ -11,12 +11,8 @@ export default function StaffHome() {
 
   const a_div_style = {
     margin: "20px",
-  };
+  }
 
-<<<<<<< HEAD
-    const a_div_style = {
-        margin: "20px",
-    }
 
     return (
         <div>StaffHome page<br />
@@ -33,22 +29,3 @@ export default function StaffHome() {
     )
 
 }
-=======
-  return (
-    <div className="staff">
-      <h1>StaffHome page</h1>
-      <br />
-      <div style={a_div_style}>
-        <a href="/staff-view-appointment" style={a_style}>
-          view my appointments
-        </a>
-      </div>
-      <div style={a_div_style}>
-        <a href="" style={a_style}>
-          my profile
-        </a>
-      </div>
-    </div>
-  );
-}
->>>>>>> ae721319ab0b8ba9ed9b176c9ac01c1201704761
