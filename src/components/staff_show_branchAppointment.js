@@ -7,6 +7,10 @@ export default function StaffShowBranchAppointment() {
 
     const nav = useNavigate()
 
+    const button_style = {
+        marign: "10px"
+    }
+
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
     const [branchNo, setBranchNo] = useState();
