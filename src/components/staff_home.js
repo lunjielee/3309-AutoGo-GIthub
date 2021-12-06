@@ -5,7 +5,7 @@ export default function StaffHome() {
   const nav = useNavigate()
   return (
     <div>
-      <h1>StaffHome page</h1>
+      <h1>Staff Home page</h1>
       <div class="mt-3">
         <button onClick={() => { nav('/staff-view-appointment') }} id='staff-home-btn-1' class="btn btn-primary" type="button">View My Appointments</button>
       </div>

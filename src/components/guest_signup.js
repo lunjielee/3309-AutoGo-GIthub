@@ -34,30 +34,33 @@ export default function GuestSingup() {
         }
     }
     return (
-        <div>guest signup page</div>,
-
-        <form className="signup_form">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input onChange={(event) => { setUsername(event.target.value) }} class="form-control" id="username" required />
-            </div>
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input onChange={(event) => { setPassword(event.target.value) }} type="password" class="form-control" id="password" required />
-            </div>
-
-            <div class="mb-3">
-                <label for="address" class="form-label">Address (optional)</label>
-                <input onChange={(event) => { setAddress(event.target.value) }} class="form-control" id="address" />
-            </div>
-
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
-                <input onChange={(event) => { setPhone(event.target.value) }} class="form-control" id="phone" required />
-            </div>
-
-            <button onClick={guestSignup} type='button' class="btn btn-primary">Signup As Guest</button>
-        </form>
+        <div class="row align-items-center w-25 m-auto">
+            <h2>
+                Welcome <small class="text-muted">New Guest</small>
+            </h2>
+            <form>
+                <div class="form-floating mb-3">
+                    <input onChange={(event) => { setUsername(event.target.value) }} name="inputUserName" type="text" class="form-control" id="username_guest"
+                        placeholder="User name" required />
+                    <label for="username" class="form-label">Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input onChange={(event) => { setPassword(event.target.value) }} name="inputPassword" type="password" class="form-control" id="password_guest"
+                        placeholder="Password" required />
+                    <label for="password" class="form-label">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input onChange={(event) => { setAddress(event.target.value) }} name="inputAddress" type="password" class="form-control" id="address_guest"
+                        placeholder="1 Infinite Loop" />
+                    <label for="address" class="form-label">Address (Optional)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input onChange={(event) => { setPhone(event.target.value) }} name="inputPhone" type="password" class="form-control" id="phone_guest"
+                        placeholder="1234567890" required />
+                    <label for="phone" class="form-label">Phone</label>
+                </div>
+                <button onClick={guestSignup} type='button' class="btn btn-primary">Sign Up as Guest</button>
+            </form>
+        </div>
     )
-    }
+}

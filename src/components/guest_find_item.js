@@ -24,12 +24,12 @@ export default function GuestFindItem() {
 
     return (
         <div>
-            <h1>Find Accessory Locations</h1>
+            <h2>Find Accessory Locations</h2>
             <div class="mt-3">
-                <button onClick={() => { nav('/guest-home') }} id='guest-add-appointment-btn-1' class="btn btn-primary" type="button">Back to Guest Home Page</button>
+                <button onClick={() => { nav('/guest-home') }} id='guest-find-item-btn-1' class="btn btn-primary" type="button">Back to Guest Home Page</button>
             </div>
 
-            <div class="form-floating mb-3 mt-3">
+            <div class="form-floating mb-3 mt-3 w-25 m-auto">
                 <input onChange={(event) => { setItemNo(event.target.value) }} name='itemNameInput' type="text" class="form-control" id="item"
                     placeholder="Type in item name" required />
                 <label for="itemName" class="form-label">Item Name</label>

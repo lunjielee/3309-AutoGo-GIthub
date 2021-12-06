@@ -74,7 +74,7 @@ export default function GuestViewAppointment() {
                 </div>
             </div>
             <div class="mt-3">
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-3 w-25 m-auto">
                     <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' type="text" class="form-control" id="inputUserNameStaff"
                         placeholder="Type in the appointment number to view the payment" required />
                     <label for="inputUserName" class="form-label">Appointment Number</label>

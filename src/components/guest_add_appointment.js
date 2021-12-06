@@ -38,11 +38,11 @@ export default function AddAppointment() {
     }
     return (
         <div>
-            <h1>Add Appointment page</h1>
+            <h2>Add Appointment page</h2>
             <div class="mt-3">
                 <button onClick={() => { nav('/guest-home') }} id='guest-add-appointment-btn-1' class="btn btn-primary" type="button">Back to Guest Home Page</button>
             </div>
-            <div class="mt-3">
+            <div class="mt-3 w-25 m-auto">
                 <form>
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setDate(event.target.value) }} name='appointmentDateInput' type="text" class="form-control" id="date"

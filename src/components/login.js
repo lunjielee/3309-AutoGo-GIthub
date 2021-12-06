@@ -59,14 +59,13 @@ export default function Login() {
     }
 
     return (
-        <div class="row align-items-center">
-
-            <div class="col">
+        <div class="row align-items-center w-50 mw-50 m-auto">
+            <div class="col border-end border-2">
                 <form class="form-horizontal" >
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setCurrentUser(event.target.value) }} name="inputUserName" type="text" class="form-control" id="inputUserNameStaff"
                             placeholder="User name" required />
-                        <label for="inputUserName" class="form-label">User Name</label>
+                        <label for="inputUserName" class="form-label">Staff User Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setPassword(event.target.value) }} name="inputPassword" type="password" class="form-control" id="inputPasswordStaff"
@@ -74,7 +73,7 @@ export default function Login() {
                         <label for="inputPassword" class="form-label">Password</label>
                     </div>
                     <div class="position-relative">
-                        <div class="position-absolute top-0 end-0">
+                        <div class="mt-3 position-absolute top-50 start-50 translate-middle">
                             <button onClick={staffLogin} id='staff-login-btn' class="btn btn-primary" type="button">Log In As Staff</button>
                         </div>
                     </div>
@@ -86,7 +85,7 @@ export default function Login() {
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setCurrentUser(event.target.value) }} name="inputUserName" type="text" class="form-control" id="inputUserNameGuest"
                             placeholder="User name" required />
-                        <label for="inputUserName" class="form-label">User Name</label>
+                        <label for="inputUserName" class="form-label">Guest User Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setPassword(event.target.value) }} name="inputPassword" type="password" class="form-control" id="inputPasswordGuest"
@@ -94,7 +93,7 @@ export default function Login() {
                         <label for="inputPassword" class="form-label">Password</label>
                     </div>
                     <div class="position-relative">
-                        <div class="position-absolute top-0 end-0">
+                        <div class="mt-3 position-absolute top-50 start-50 translate-middle">
                             <button onClick={guestLogin} id='guest-login-btn' class="btn btn-primary" type="button">Log In As Guest</button>
                         </div>
                     </div>

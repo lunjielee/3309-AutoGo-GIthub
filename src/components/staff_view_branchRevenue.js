@@ -29,13 +29,12 @@ export default function StaffViewBranchRevenue() {
             <div class="mt-3">
                 <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
             </div>
-            <div class="input-group mb-3 mt-3">
-                <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' type="text" class="form-control" placeholder="Date From" aria-label="Date From"></input>
+            <div class="input-group mb-3 mt-3 w-50 m-auto">
+                <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' type="text" class="form-control" placeholder="E.g. 2021-08-01 00:00:00" aria-label="Date From"></input>
                 <span class="input-group-text">To</span>
-                <input onChange={(event => { setDateTo(event.target.value) })} id='dateTo' type="text" class="form-control" placeholder="Date To" aria-label="Date To"></input>
+                <input onChange={(event => { setDateTo(event.target.value) })} id='dateTo' type="text" class="form-control" placeholder="E.g. 2021-08-31 00:00:00" aria-label="Date To"></input>
             </div>
-            <button onClick={getDateList} id='staff-view-btn-2' class="btn btn-primary" type="button">Show Branch</button>
-            <div class="mt-3">Follow this format: 2021-08-20 10:00:00</div>
+            <button onClick={getDateList} id='staff-view-btn-2' class="btn btn-primary" type="button">Show Branch with Above Range</button>
             <div class="mt-3">
                 <div>
                     <div class="row">
