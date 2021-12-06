@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
@@ -82,6 +81,7 @@ export default function GuestViewAppointment() {
                 </div>
                 <div class="mt-3">
                     <button onClick={viewReceipt} id='guest-view-btn-3' class="btn btn-primary">View Receipt</button>
+                    <button onClick={deleteAppointment} id='guest-view-btn-4' class="btn btn-primary ms-3">Delete Appointment</button>
                 </div>
                 <div class="mt-3">
                     <div class="row">
