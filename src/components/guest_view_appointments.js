@@ -61,7 +61,7 @@ export default function GuestViewAppointment() {
                 <a href='/guest-home' style={a_style}>Back to Guest Home Page</a><br />
             </div>
             <br></br>
-            <button onClick={getResultList}>Show Appointments</button>
+            <button onClick={getResultList} type='button' class="btn btn-primary">Show Appointments</button>
             <br></br>
             <input value='AppointmentNo' readOnly></input>
             <input value='Service Type' readOnly></input>
@@ -81,13 +81,13 @@ export default function GuestViewAppointment() {
 
             <br></br>
             <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in appointmentNo"></input>
-            <button onClick={deleteAppointment}>Delete Appointment</button>
+            <button onClick={deleteAppointment} type='button' class="btn btn-primary">Delete Appointment</button>
             <br></br>
 
 
             <br></br>
             <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in appointmentNo"></input>
-            <button onClick={viewReceipt}>View Receipt</button>
+            <button onClick={viewReceipt} type='button' class="btn btn-primary">View Receipt</button>
             <br></br>
             <input value='AppointmentNo' readOnly></input>
             <input value='Client' readOnly></input>

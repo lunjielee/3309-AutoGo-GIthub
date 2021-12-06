@@ -330,13 +330,15 @@ app.post('/api/staff_login', function (req, res) {
                 if (error) {
                     console.log(error)
                 }
-                if (results.length > 0) {
-                    res.cookie('user', userName);
-                    res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
-                    // Send the logged in staff data
-                    res.send(results);
+                if(results){
+                    if (results.length > 0) {
+                        res.cookie('user', userName);
+                        res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
+                        // Send the logged in staff data
+                        res.send(results);
+                    }
+                    res.end();
                 }
-                res.end();
             })
         } 
     }

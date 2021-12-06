@@ -15,8 +15,8 @@ export default function StaffShowBranchAppointment() {
     const a_div_style = {
         margin: "20px",
     }
-    
-    const buttom_style={
+
+    const button_style={
         marign:"10px"
     }
 
@@ -45,7 +45,7 @@ export default function StaffShowBranchAppointment() {
             </div>
             <input onChange={(event)=> {setBranchNo(event.target.value)}} id='branchNo' placeholder='Branch No'></input><br/>
 
-            <button onClick={getCarList} style={buttom_style}>Show Car List</button>
+            <button onClick={getCarList} style={button_style} type='button' class="btn btn-primary">Show Car List</button>
 
             <br></br>
             <input value='License Plate'readOnly></input>

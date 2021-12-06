@@ -22,13 +22,12 @@ export default function Login() {
                 usr: currentUser,
                 pwd: password
             }).then(response => {
-                setAuthKey(response.data)
                 if (currentUser !== "" && response.data !== "") {
                     localStorage.setItem("currentUser", currentUser)
                     localStorage.setItem("password", password)
-                    if(response.data[0].position=='manager'){
+                    if (response.data[0].position == 'manager') {
                         navigate('/staff-manager-home');
-                    }else{
+                    } else {
                         navigate('/staff-home');
                     }
                     window.location.reload();
@@ -40,7 +39,6 @@ export default function Login() {
     }
 
     const guestLogin = () => {
-
         if (currentUser !== "" && password !== '') {
             // Using Axios to send post request to our backend
             Axios.post(`http://${API_DOMAIN}:8081/api/guest_login`, {
@@ -49,7 +47,6 @@ export default function Login() {
                 pwd: password
             }).then(response => {
                 if (currentUser !== "" && response.data !== "") {
-                    setAuthKey(response.data)
                     console.log(response.data)
                     localStorage.setItem("currentUser", currentUser)
                     localStorage.setItem("password", password)

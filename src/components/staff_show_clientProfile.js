@@ -15,7 +15,7 @@ export default function StaffShowClientProfile() {
         margin: "20px",
     }
 
-    const buttom_style={
+    const button_style={
         marign:"10px"
     }
 
@@ -44,7 +44,7 @@ export default function StaffShowClientProfile() {
             
             <input onChange={(event)=> {setClientNo(event.target.value)}} id='clientNo' placeholder="Client Number"></input><br/>
 
-            <button onClick={getClientList} style={buttom_style} type='button' class="btn btn-primary">View Client Profile</button>
+            <button onClick={getClientList} style={button_style} type='button' class="btn btn-primary">View Client Profile</button>
 
             <br/>
             <input value='Client Number'readOnly></input>

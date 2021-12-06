@@ -35,7 +35,7 @@ export default function StaffViewAppointment() {
             <div style={a_div_style}>
                 <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
             </div>
-            <button onClick={getResultList}>Show Appointments</button>
+            <button onClick={getResultList} type='button' class="btn btn-primary">Show Appointments</button>
             
             <br></br>
             <input value='AppointmentNo' readOnly></input>

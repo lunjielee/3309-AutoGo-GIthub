@@ -44,7 +44,7 @@ export default function StaffViewBranchRevenue() {
             <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' placeholder='Date From'></input><br />
             <input onChange={(event => { setDateTo(event.target.value) })} id='dateTo' placeholder='Date To'></input><br />
 
-            <button onClick={getDateList}>Show Branch</button>
+            <button onClick={getDateList} type='button' class="btn btn-primary">Show Branch Revenue</button>
             <div>Follow this format: 2021-08-20 10:00:00</div>
             <br></br>
             <input value='Branch Number' readOnly></input>
