@@ -7,7 +7,7 @@ export default function Login() {
     //React hooks
     const [currentUser, setCurrentUser] = useState("");
     const [password, setPassword] = useState("");
-    const [authKey, setAuthKey] = useState("Not authorized");//what's this for?
+    const [authKey, setAuthKey] = useState("Wrong username or password");
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
     //For navigate between pages
@@ -26,7 +26,11 @@ export default function Login() {
                 if (currentUser !== "" && response.data !== "") {
                     localStorage.setItem("currentUser", currentUser)
                     localStorage.setItem("password", password)
-                    navigate('/staff-home')
+                    if(response.data[0].position=='manager'){
+                        navigate('/staff-manager-home');
+                    }else{
+                        navigate('/staff-home');
+                    }
                     window.location.reload();
                 } else {
                     alert(authKey);
@@ -44,11 +48,13 @@ export default function Login() {
                 usr: currentUser,
                 pwd: password
             }).then(response => {
-                setAuthKey(response.data)
-                if (currentUser !== "" && response.data !== '') {
+                if (currentUser !== "" && response.data !== "") {
+                    setAuthKey(response.data)
+                    console.log(response.data)
                     localStorage.setItem("currentUser", currentUser)
                     localStorage.setItem("password", password)
                     localStorage.setItem('clientNo', response.data[0].clientNo)
+                    console.log('guest login nav called')
                     navigate('/guest-home')
                     window.location.reload();
                 } else {
@@ -62,7 +68,7 @@ export default function Login() {
         <div class="row align-items-center">
 
             <div class="col">
-                <div className='staffLogin'>
+                <div class='staffLogin'>
                     <form class="form-horizontal" >
                         <div class="form-floating mb-3">
                             <input onChange={(event) => { setCurrentUser(event.target.value) }} name="inputUserName" type="text" class="form-control" id="inputUserNameStaff"
@@ -75,7 +81,7 @@ export default function Login() {
                             <label for="inputPassword" class="form-label">Password</label>
                         </div>
                         <div class="position-relative">
-                            <div class="position-absolute top-0 ">
+                            <div class="position-absolute top-0 end-0">
                                 <button onClick={staffLogin} id='staff-login-btn' class="btn btn-dark" type="button">Log In As Staff</button>
                             </div>
                         </div>
@@ -84,7 +90,7 @@ export default function Login() {
             </div>
 
             <div class="col">
-                <div className='guestLogin'>
+                <div class='guestLogin'>
                     <form class="form-horizontal" >
                         <div class="form-floating mb-3">
                             <input onChange={(event) => { setCurrentUser(event.target.value) }} name="inputUserName" type="text" class="form-control" id="inputUserNameGuest"
@@ -97,7 +103,7 @@ export default function Login() {
                             <label for="inputPassword" class="form-label">Password</label>
                         </div>
                         <div class="position-relative">
-                            <div class="position-absolute top-0 ">
+                            <div class="position-absolute top-0 end-0">
                                 <button onClick={guestLogin} id='guest-login-btn' class="btn btn-dark" type="button">Log In As Guest</button>
                             </div>
                         </div>

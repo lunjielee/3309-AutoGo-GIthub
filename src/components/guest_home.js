@@ -31,10 +31,6 @@ export default function GuestHome() {
             <div style={a_div_style}>
                 <a href='/guest-find-item' style={a_style}>Search Accessory</a>
             </div>
-
-            <div style={a_div_style}>
-                <a href='/staff-location' style={a_style}>staffs at each location</a>
-            </div>
         
         </div>
         

@@ -134,21 +134,21 @@ app.post('/api/staff_location', function (req, res) {
     const branchNo = req.body.branchNo;
     console.log(req.body);
 
-   
-        conn.query(`SELECT s.name, s.position, b.location
+
+    conn.query(`SELECT s.name, s.position, b.location
                 FROM staffs s, branches b
                 WHERE s.branchNo = b.branchNo AND b.branchNo= ('${branchNo}')`,
 
-            (error, rows, fields) => {
-                if (error) { console.log(error); }
-                else {
-                    res.send(rows);
-                }
-
+        (error, rows, fields) => {
+            if (error) { console.log(error); }
+            else {
+                res.send(rows);
             }
-            
-        )
-    
+
+        }
+
+    )
+
 })
 
 app.post('/api/staff_view_appointment', function (req, res) {
@@ -327,20 +327,18 @@ app.post('/api/staff_login', function (req, res) {
         //check if the staff is in our DB
         if (userName && password) {
             conn.query('SELECT * FROM staffs WHERE name = ? AND password = ?', [userName, password], (error, results) => {
+                if (error) {
+                    console.log(error)
+                }
                 if (results.length > 0) {
                     res.cookie('user', userName);
                     res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
                     // Send the logged in staff data
                     res.send(results);
-                } else {
-                    res.send('Incorrect Username and/or Password!');
                 }
                 res.end();
             })
-        } else {
-            res.send('Please enter Username and Password!');
-            res.end();
-        }
+        } 
     }
 })
 
@@ -355,20 +353,18 @@ app.post('/api/guest_login', function (req, res) {
         //check if the guest is in our DB
         if (userName && password) {
             conn.query('SELECT * FROM clients WHERE name = ? AND password = ?', [userName, password], (error, results) => {
+                if (error) {
+                    console.log(error)
+                }
                 if (results.length > 0) {
                     res.cookie('user', userName);
                     res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
-                    // Send our auth token
+                    // Send logged in client data
                     res.send(results);
-                } else {
-                    res.send('Incorrect Username and/or Password!');
                 }
                 res.end();
             });
-        } else {
-            res.send('Please enter Username and Password!');
-            res.end();
-        }
+        } 
     }
 })
 

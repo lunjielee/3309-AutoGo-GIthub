@@ -15,6 +15,10 @@ export default function StaffShowBranchAppointment() {
     const a_div_style = {
         margin: "20px",
     }
+    
+    const buttom_style={
+        marign:"10px"
+    }
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
@@ -37,11 +41,11 @@ export default function StaffShowBranchAppointment() {
         <div>
             <h1>Show Branch Appointment Of Each Car</h1>
             <div style={a_div_style}>
-                <a href='/staff-home' style={a_style}>Back to Staff Home</a>
+                <a href='/staff-manager-home' style={a_style}>Back to Manager Home</a>
             </div>
             <input onChange={(event)=> {setBranchNo(event.target.value)}} id='branchNo' placeholder='Branch No'></input><br/>
 
-            <button onClick={getCarList}>Show Car List</button>
+            <button onClick={getCarList} style={buttom_style}>Show Car List</button>
 
             <br></br>
             <input value='License Plate'readOnly></input>

@@ -15,6 +15,10 @@ export default function StaffShowClientProfile() {
         margin: "20px",
     }
 
+    const buttom_style={
+        marign:"10px"
+    }
+
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
     const [clientNo, setClientNo] = useState();
@@ -35,17 +39,16 @@ export default function StaffShowClientProfile() {
         <div>
             <h1>Your Personal Information</h1>
             <div style={a_div_style}>
-                <a href='/staff-home' style={a_style}>Back to Staff Home</a>
+                <a href='/staff-manager-home' style={a_style}>Back to Manager Home</a>
             </div>
             
             <input onChange={(event)=> {setClientNo(event.target.value)}} id='clientNo' placeholder="Client Number"></input><br/>
 
-            <button onClick={getClientList}>Profile</button>
+            <button onClick={getClientList} style={buttom_style} type='button' class="btn btn-primary">View Client Profile</button>
 
             <br/>
             <input value='Client Number'readOnly></input>
             <input value='Name' readOnly></input>
-            <input value='Password' readOnly></input>
             <input value='Address' readOnly></input>
             <input value='Phone Number' readOnly></input>
 
@@ -54,7 +57,6 @@ export default function StaffShowClientProfile() {
                 return <div>
                     <input value={val.clientNo} readOnly></input>
                     <input value={val.name} readOnly></input>
-                    <input value={val.password} readOnly></input>
                     <input value={val.address} readOnly></input>
                     <input value={val.phone} readOnly></input>
                 </div>

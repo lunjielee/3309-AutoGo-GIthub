@@ -41,7 +41,7 @@ export default function StaffLocation() {
         <div>
             <h1>Check which staff is working on each branch</h1>
             <div style={a_div_style}>
-                <a href='/guest-home' style={a_style}>Back to Home Page</a><br />
+                <a href='/staff-manager-home' style={a_style}>Back to Home Page</a><br />
             </div>
             <br></br>
 
@@ -56,7 +56,7 @@ export default function StaffLocation() {
             </div>
 
 
-            <button onClick={submitSelection} type='button' class="btn btn-primary">Submit</button>
+            <button onClick={submitSelection} type='button' class="btn btn-primary">View</button>
             <br></br>
             <input value='Name' readOnly></input>
             <input value='Position' readOnly></input>

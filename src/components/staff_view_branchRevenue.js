@@ -38,7 +38,7 @@ export default function StaffViewBranchRevenue() {
         <div>
             <h1>Staff View Branch Monthly Revenue Page</h1>
             <div style={a_div_style}>
-                <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
+                <a href='/staff-manager-home' style={a_style}>Back to Manager Home Page</a><br />
             </div>
 
             <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' placeholder='Date From'></input><br />
