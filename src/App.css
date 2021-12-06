@@ -66,7 +66,6 @@ h1 {
 .staff {
   background-color: #61dafb;
   padding: 150px;
-  <<<<<<< HEAD=======
 }
 
 .client {
@@ -93,5 +92,4 @@ h1 {
 
 #guest-login-btn:hover {
   font: bold;
-  >>>>>>>c761b4a46b8ec3f57154ecd9da5ff3ad158cae45
 }
