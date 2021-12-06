@@ -43,16 +43,16 @@ export default function GuestShowBranchAppointment() {
 
             <button onClick={getCarList}>Show Car List</button>
 
+            <br></br>
+            <input value='License Plate'readOnly></input>
+            <input value='Color' readOnly></input>
+            <input value='Model' readOnly></input>
+            <input value='Make' readOnly></input>
+            <input value='Branch Number' readOnly></input>
+
             {carlist.map((val)=>{
                 console.log(val)
-
                 return <div>
-                    <input value='License Plate'readOnly></input>
-                    <input value='Color' readOnly></input>
-                    <input value='Model' readOnly></input>
-                    <input value='Make' readOnly></input>
-                    <input value='Branch Number' readOnly></input>
-
                     <input value={val.licensePlate} readOnly></input>
                     <input value={val.color} readOnly></input>
                     <input value={val.model} readOnly></input>

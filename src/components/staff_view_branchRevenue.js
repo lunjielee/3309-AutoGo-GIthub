@@ -46,20 +46,18 @@ export default function StaffViewBranchRevenue() {
 
             <button onClick={getDateList}>Show Branch</button>
             <div>Follow this format: 2021-08-20 10:00:00</div>
-
-
+            <br></br>
+            <input value='Branch Number' readOnly></input>
+            <input value='Location' readOnly></input>
+            <input value='Monthly Revenue' readOnly></input>
+            <br/>
             {dateList.map((val) => {
                 console.log(val)
 
                 return <div>
-                    <input value='Branch Number' readOnly></input>
-                    <input value='Location' readOnly></input>
-                    <input value='Monthly Revenue' readOnly></input>
-
                     <input value={val.branchNo} readOnly></input>
                     <input value={val.location} readOnly></input>
                     <input value={val.totalPayment} readOnly></input>
-
                 </div>
             })}
         </div>
