@@ -37,7 +37,6 @@ export default function StaffSingup() {
   return (
     (<div>staff signup page</div>),
     (
-      <div className="signup_con">
         <form>
           <div class="mb-3">
             <label for="username" class="form-label">
@@ -100,7 +99,6 @@ export default function StaffSingup() {
             Signup As Staff
           </button>
         </form>
-      </div>
     )
   );
 }

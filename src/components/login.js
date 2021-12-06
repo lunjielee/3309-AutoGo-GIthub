@@ -59,7 +59,6 @@ export default function Login() {
     }
 
     return (
-
         <div class="row align-items-center">
 
             <div class="col">
@@ -101,7 +100,6 @@ export default function Login() {
                     </div>
                 </form>
             </div>
-
         </div>
     )
 }
