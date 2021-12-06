@@ -29,7 +29,7 @@ export default function GuestHome() {
                 <a href='/add-appointment' style={a_style}>Book A Appointment</a>
             </div>
             <div style={a_div_style}>
-                <a href='/guest-find-item' style={a_style}>Find Locations</a>
+                <a href='/guest-find-item' style={a_style}>Search Accessory</a>
             </div>
 
             <div style={a_div_style}>

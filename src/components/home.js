@@ -12,7 +12,7 @@ export default class Home extends Component {
               </h1>
               <div class="page-header">
                 <p class="lead"></p>
-                <p class="lead0">Find the best car for you!</p>
+                <p class="lead0">Find we provide the best automobile service!</p>
               </div>
               <div style={{ padding: 10 }}>
                 <Link

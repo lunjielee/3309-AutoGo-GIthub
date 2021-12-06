@@ -39,7 +39,7 @@
 
 .col_back {
   height: 725px;
-  width: 100%;
+  width: auto;
   background-image: url(back.png);
   padding: 100px;
   margin: 0px;
@@ -70,4 +70,25 @@ h1 {
 .client {
   background-color: plum;
   padding: 150px;
+}
+
+.staffLogin{
+  border-right: black 5px solid;
+  padding: 40px;
+}
+
+#staff-login-btn{
+  width: 560px;
+}
+
+#staff-login-btn:hover{
+  font:bold;
+}
+
+#guest-login-btn{
+width: 640px;
+}
+
+#guest-login-btn:hover{
+  font: bold;
 }

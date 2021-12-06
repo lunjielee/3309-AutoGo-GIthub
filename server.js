@@ -81,6 +81,7 @@ app.post('/api/add_appointment', function (req, res) {
             }
         })
 })
+
 app.post('/api/staff_show_branchAppointment', function (req, res) {
     conn = newConnection();
     conn.connect();
@@ -149,8 +150,6 @@ app.post('/api/staff_location', function (req, res) {
         )
     
 })
-
-
 
 app.post('/api/staff_view_appointment', function (req, res) {
     conn = newConnection();
@@ -231,11 +230,6 @@ app.post('/api/guest_view_appointment', function (req, res) {
 
         })
 })
-
-
-
-
-
 
 app.post('/api/guest_delete_appointment', function (req, res) {
     conn = newConnection();
@@ -377,10 +371,6 @@ app.post('/api/guest_login', function (req, res) {
         }
     }
 })
-
-
-
-
 
 
 // It is safe to remove this I believe
