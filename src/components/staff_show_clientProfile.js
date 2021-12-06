@@ -6,6 +6,10 @@ export default function StaffShowClientProfile() {
 
     const nav = useNavigate()
 
+    const button_style = {
+        marign: "10px"
+    }
+
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
     const [clientNo, setClientNo] = useState();

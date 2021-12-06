@@ -22,6 +22,7 @@ import StaffViewBranchRevenue from './components/staff_view_branchRevenue';
 import AddAppointment from './components/guest_add_appointment';
 import StaffViewBRevenue from './components/staff_view_branchRevenue';
 import StaffLocation from './components/staff_location';
+import StaffManagerHome from './components/staff_manager_home';
 
 
 class App extends Component {
@@ -64,6 +65,7 @@ class App extends Component {
             <Route path="/guest-signup" element={<GuestSignup />} />
             <Route path="/guest-home" element={<GuestHome />} />
             <Route path="/staff-home" element={<StaffHome />} />
+            <Route path="/staff-manager-home" element={<StaffManagerHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
             <Route path="/guest-find-item" element={<GuestFindItem />} />
             <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile />} />

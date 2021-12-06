@@ -7,7 +7,7 @@ export default function Login() {
     //React hooks
     const [currentUser, setCurrentUser] = useState("");
     const [password, setPassword] = useState("");
-    const [authKey, setAuthKey] = useState("Not authorized");//what's this for?
+    const [authKey, setAuthKey] = useState("Wrong username or password");
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
     //For navigate between pages
@@ -22,11 +22,14 @@ export default function Login() {
                 usr: currentUser,
                 pwd: password
             }).then(response => {
-                setAuthKey(response.data)
                 if (currentUser !== "" && response.data !== "") {
                     localStorage.setItem("currentUser", currentUser)
                     localStorage.setItem("password", password)
-                    navigate('/staff-home')
+                    if (response.data[0].position == 'manager') {
+                        navigate('/staff-manager-home');
+                    } else {
+                        navigate('/staff-home');
+                    }
                     window.location.reload();
                 } else {
                     alert(authKey);
@@ -36,7 +39,6 @@ export default function Login() {
     }
 
     const guestLogin = () => {
-
         if (currentUser !== "" && password !== '') {
             // Using Axios to send post request to our backend
             Axios.post(`http://${API_DOMAIN}:8081/api/guest_login`, {
@@ -44,11 +46,12 @@ export default function Login() {
                 usr: currentUser,
                 pwd: password
             }).then(response => {
-                setAuthKey(response.data)
-                if (currentUser !== "" && response.data !== '') {
+                if (currentUser !== "" && response.data !== "") {
+                    console.log(response.data)
                     localStorage.setItem("currentUser", currentUser)
                     localStorage.setItem("password", password)
                     localStorage.setItem('clientNo', response.data[0].clientNo)
+                    console.log('guest login nav called')
                     navigate('/guest-home')
                     window.location.reload();
                 } else {
