@@ -74,6 +74,12 @@ export default function GuestViewAppointment() {
                     })}
                 </div>
             </div>
+            <div>
+                <br></br>
+                <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in appointmentNo"></input>
+                <button onClick={deleteAppointment}>Delete Appointment</button>
+                <br></br>
+            </div>
             <div class="mt-3">
                 <div class="form-floating mb-3">
                     <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' type="text" class="form-control" id="inputUserNameStaff"

@@ -15,7 +15,10 @@ export default function GuestHome() {
             <div class="mt-3">
                 <button onClick={() => { nav('#') }} id='guest-home-btn-3' class="btn btn-primary" type="button">View my profile</button>
             </div>
-        </div >
+            <div style={a_div_style}>
+                <a href='/guest-find-item' style={a_style}>Find Locations</a>
+            </div>
+        </div>
     )
 
 }
