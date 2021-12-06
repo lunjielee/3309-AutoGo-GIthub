@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
-export default function StaffViewAppointment() {
+export default function StaffViewBranchRevenue() {
 
     const a_style = {
         backgroundColor: "black",
@@ -17,39 +16,48 @@ export default function StaffViewAppointment() {
     }
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
-    const [resultList, setResultList] = useState([]);
 
-    const getResultList = () => {
+    const [dateFrom, setDateFrom] = useState("");
+    const [dateTo, setDateTo] = useState("");
+    const [dateList, setDateList] = useState([]);
+
+
+    const getDateList = () => {
         console.log(localStorage.currentUser);
-        Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_appointment`, {
-            userName: localStorage.currentUser,
-            password: localStorage.password
+        Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_branchRevenue`, {
+            dateFrom: dateFrom,
+            dateTo: dateTo
+
         }).then(response => {
-            setResultList(response.data)
+            console.log(response.data);
+            setDateList(response.data);
         })
     }
 
     return (
         <div>
-            <h1>Staff View Appointment Page</h1>
+            <h1>Staff View Branch Monthly Revenue Page</h1>
             <div style={a_div_style}>
                 <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
             </div>
-            <button onClick={getResultList}>Show Appointments</button>
+
+            <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' placeholder='Date From'></input><br />
+            <input onChange={(event => { setDateTo(event.target.value) })} id='dateTo' placeholder='Date To'></input><br />
+
+            <button onClick={getDateList}>Show Branch</button>
+            <div>Follow this format: 2021-08-20 10:00:00</div>
             <br></br>
-            <input value='AppointmentNo' readOnly></input>
-            <input value='Service Type'readOnly></input>
-            <input value='Service Description' readOnly></input>
-            <input value='Date' readOnly></input>
-            <input value='License Plate'readOnly></input>
-            <br></br>
-            {resultList.map((val) => {
+            <input value='Branch Number' readOnly></input>
+            <input value='Location' readOnly></input>
+            <input value='Monthly Revenue' readOnly></input>
+            <br/>
+            {dateList.map((val) => {
+                console.log(val)
+
                 return <div>
-                        <input value={val.appointmentNo} readOnly></input>
-                        <input value={val.serviceType} readOnly></input>
-                        <input value={val.serviceDescription} readOnly></input>
-                        <input value={val.date} readOnly></input>
-                        <input value={val.licensePlate} readOnly></input>
+                    <input value={val.branchNo} readOnly></input>
+                    <input value={val.location} readOnly></input>
+                    <input value={val.totalPayment} readOnly></input>
                 </div>
             })}
         </div>

@@ -13,11 +13,17 @@ import GuestHome from './components/guest_home'
 import StaffHome from './components/staff_home'
 import StaffSignup from './components/staff_signup'
 import GuestSignup from './components/guest_signup'
+import GuestFindItem from './components/guest_find_item'
 import GuestViewAppointment from './components/guest_view_appointments';
+import StaffShowBranchAppointment from './components/staff_show_branchAppointment';
+import StaffShowClientProfile from './components/staff_show_clientProfile';
 import StaffViewAppointment from './components/staff_view_appointment';
+import StaffViewBranchRevenue from './components/staff_view_branchRevenue';
 import AddAppointment from './components/guest_add_appointment';
 import StaffViewBRevenue from './components/staff_view_branchRevenue';
 import StaffLocation from './components/staff_location';
+
+
 class App extends Component {
   render() {
     return (
@@ -59,10 +65,15 @@ class App extends Component {
             <Route path="/guest-home" element={<GuestHome />} />
             <Route path="/staff-home" element={<StaffHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
+            <Route path="/guest-find-item" element={<GuestFindItem/>}/>
+            <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile/>}/>
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
             <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />}/>
             <Route path="/add-appointment" element={<AddAppointment />} />
             <Route path="/staff-location" element={<StaffLocation />} />
+            <Route path="/staff-view-branchRevenue" element={<StaffViewBranchRevenue />}/>
+            <Route path="/staff-show-branchAppointment" element={<StaffShowBranchAppointment />}/>
+            <Route path="/add-appointment" element={<AddAppointment />} />       
           </Routes>
         </div>
         <footer className="py-3 my-4">

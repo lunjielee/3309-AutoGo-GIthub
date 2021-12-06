@@ -84,6 +84,7 @@ export default function GuestViewAppointment() {
             <button onClick={deleteAppointment}>Delete Appointment</button>
             <br></br>
 
+
             <br></br>
             <input onChange={(event) => { setAppointmentNo(event.target.value) }} name='appointmentNoInput' placeholder="Type in appointmentNo"></input>
             <button onClick={viewReceipt}>View Receipt</button>

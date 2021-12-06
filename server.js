@@ -3,7 +3,8 @@ const app = express();
 const newConnection = require('./DBConnector');
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
-const path = require('path')
+const path = require('path');
+const e = require('express');
 
 app.use(express.urlencoded({
     extended: true
@@ -80,6 +81,51 @@ app.post('/api/add_appointment', function (req, res) {
             }
         })
 })
+app.post('/api/staff_show_branchAppointment', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const branchNo = req.body.branchNo
+
+    conn.query(`SELECT c.licensePlate, c.color, c. model, c.make, b.branchNo
+    FROM appointments a, branches b, cars c
+    WHERE b.branchNo = a.branchNo
+    AND c.licensePlate = a.licensePlate
+    AND b.branchNo='${branchNo}'`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(eror);
+            }
+            else {
+                res.send(rows)
+            }
+        })
+})
+
+app.post('/api/staff_view_branchRevenue', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const dateFrom = req.body.dateFrom
+    const dateTo = req.body.dateTo
+    //2021-08-20 10:00:00
+    conn.query(`SELECT b.branchNo, b.location, SUM(ser.price) as totalPayment
+    FROM services ser, client c, appointments a, branches b, serciveAppointment sa
+    WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo
+    AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
+    AND date >= '${dateFrom}' AND date <= '${dateTo}'
+    GROUP BY b.branchNo
+    ORDER BY a.appointmentNo`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                res.send(rows)
+            }
+
+        })
+})
 
 app.post('/api/staff_location', function (req, res) {
     conn = newConnection();
@@ -124,6 +170,41 @@ app.post('/api/staff_view_appointment', function (req, res) {
                 console.log(error);
             }
             else {
+                res.send(rows);
+            }
+        })
+})
+
+app.post('/api/staff_show_clientProfile', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const clientNo = req.body.clientNo
+
+    conn.query(`SELECT * FROM clients Where clientNo='${clientNo}'`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            } else {
+                res.send(rows);
+            }
+        })
+})
+
+app.post('/api/guest_find_item', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const itemNo = req.body.itemNo
+
+    conn.query(`SELECT ac.item, ac.price, b.location, acb.inventory
+                FROM accessories ac, branches b, accessorybranch acb
+                WHERE ac.item = '${itemNo}' AND b.branchNo = acb.branchNo AND ac.item = acb.item
+                ORDER BY ac.price`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            } else {
                 res.send(rows);
             }
         })
