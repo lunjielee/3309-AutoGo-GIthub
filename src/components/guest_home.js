@@ -30,6 +30,9 @@ export default function GuestHome() {
             <div style={a_div_style}>
                 <a href='/guest-find-item' style={a_style}>Find Locations</a>
             </div>
+            <div style={a_div_style}>
+                <a href='/guest-show-branchAppointment' style={a_style}>Show Branch Appointments</a>
+            </div>
         </div>
     )
 

@@ -47,7 +47,7 @@ app.post('/api/add_appointment', function (req, res) {
                             }
                         })
                 }
-                if (service2=='car wash' || service2=='inspection' || service2=='maintenance' || service2=='tire change') {
+                if (service2 == 'car wash' || service2 == 'inspection' || service2 == 'maintenance' || service2 == 'tire change') {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service2}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
@@ -57,7 +57,7 @@ app.post('/api/add_appointment', function (req, res) {
                             }
                         })
                 }
-                if (service3=='car wash' || service3=='inspection' || service3=='maintenance' || service3=='tire change') {
+                if (service3 == 'car wash' || service3 == 'inspection' || service3 == 'maintenance' || service3 == 'tire change') {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service3}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
@@ -67,7 +67,7 @@ app.post('/api/add_appointment', function (req, res) {
                             }
                         })
                 }
-                if (service4=='car wash' || service4=='inspection' || service4=='maintenance' || service4=='tire change') {
+                if (service4 == 'car wash' || service4 == 'inspection' || service4 == 'maintenance' || service4 == 'tire change') {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service4}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
@@ -81,13 +81,33 @@ app.post('/api/add_appointment', function (req, res) {
             }
         })
 })
+app.post('/api/staff_show_branchAppointment', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const branchNo = req.body.branchNo
+
+    conn.query(`SELECT c.licensePlate, c.color, c. model, c.make, b.branchNo
+    FROM appointments a, branches b, cars c
+    WHERE b.branchNo = a.branchNo
+    AND c.licensePlate = a.licensePlate
+    AND b.branchNo='${branchNo}'`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(eror);
+            }
+            else {
+                res.send(rows)
+            }
+        })
+})
 
 app.post('/api/staff_view_branchRevenue', function (req, res) {
     conn = newConnection();
     conn.connect();
 
-    const dateFrom=req.body.dateFrom
-    const dateTo=req.body.dateTo
+    const dateFrom = req.body.dateFrom
+    const dateTo = req.body.dateTo
     //2021-08-20 10:00:00
     conn.query(`SELECT b.branchNo, b.location, SUM(ser.price) as totalPayment
     FROM services ser, client c, appointments a, branches b, serciveAppointment sa
@@ -103,7 +123,7 @@ app.post('/api/staff_view_branchRevenue', function (req, res) {
             else {
                 res.send(rows)
             }
-            
+
         })
 })
 
@@ -130,20 +150,20 @@ app.post('/api/staff_view_appointment', function (req, res) {
         })
 })
 
-app.post('/api/guest_find_item', function(req, res){
-    conn=newConnection();
+app.post('/api/guest_find_item', function (req, res) {
+    conn = newConnection();
     conn.connect();
 
-    const itemNo=req.body.itemNo
+    const itemNo = req.body.itemNo
 
     conn.query(`SELECT ac.item, ac.price, b.location, acb.inventory
                 FROM accessories ac, branches b, accessorybranch acb
                 WHERE ac.item = '${itemNo}' AND b.branchNo = acb.branchNo AND ac.item = acb.item
                 ORDER BY ac.price`,
-        (error,rows,fields)=>{
-            if(error){
+        (error, rows, fields) => {
+            if (error) {
                 console.log(error);
-            }else{
+            } else {
                 res.send(rows);
             }
         })

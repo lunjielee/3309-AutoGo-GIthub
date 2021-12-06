@@ -17,10 +17,10 @@ export default function StaffViewBranchRevenue() {
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
-    const [dateFrom, setDateFrom]=useState("");
-    const [dateTo, setDateTo]=useState("");
-    const [dateList, setDateList]=useState([]);
-    
+    const [dateFrom, setDateFrom] = useState("");
+    const [dateTo, setDateTo] = useState("");
+    const [dateList, setDateList] = useState([]);
+
 
     const getDateList = () => {
         console.log(localStorage.currentUser);
@@ -40,11 +40,9 @@ export default function StaffViewBranchRevenue() {
             <div style={a_div_style}>
                 <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
             </div>
-            <label for='dateFrom'>Date From: </label>
-            <input onChange={(event)=>{setDateFrom(event.target.value)}} id='dateFrom' placeholder='Date From'></input><br/>
-            
-            <label for='dateTo'>Date To: </label>
-            <input onChange={(event=>{setDateTo(event.target.value)})} id='dateTo' placeholder='Date To'></input><br/>
+
+            <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' placeholder='Date From'></input><br />
+            <input onChange={(event => { setDateTo(event.target.value) })} id='dateTo' placeholder='Date To'></input><br />
 
             <button onClick={getDateList}>Show Branch</button>
             <div>Follow this format: 2021-08-20 10:00:00</div>
@@ -54,7 +52,7 @@ export default function StaffViewBranchRevenue() {
                 console.log(val)
 
                 return <div>
-                    <input Value='Branch Number' readOnly></input>
+                    <input value='Branch Number' readOnly></input>
                     <input value='Location' readOnly></input>
                     <input value='Monthly Revenue' readOnly></input>
 
