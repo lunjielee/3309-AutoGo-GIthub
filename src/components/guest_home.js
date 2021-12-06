@@ -27,6 +27,9 @@ export default function GuestHome() {
             <div style={a_div_style}>
                 <a href='' style={a_style}>my profile</a>
             </div>
+            <div style={a_div_style}>
+                <a href='/guest-find-item' style={a_style}>Find Locations</a>
+            </div>
         </div>
     )
 

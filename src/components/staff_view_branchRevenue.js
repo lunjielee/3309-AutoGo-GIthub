@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
-export default function StaffViewAppointment() {
+
+export default function StaffViewBranchRevenue() {
 
     const a_style = {
         backgroundColor: "black",
@@ -18,12 +19,15 @@ export default function StaffViewAppointment() {
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
     const [resultList, setResultList] = useState([]);
+    const [dateFrom, setDateFrom]=useState("");
+    
 
     const getResultList = () => {
         console.log(localStorage.currentUser);
-        Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_appointment`, {
+        Axios.post(`http://${API_DOMAIN}:8081/api/staff_view_branchRevenue`, {
             userName: localStorage.currentUser,
-            password: localStorage.password
+            password: localStorage.password,
+
         }).then(response => {
             setResultList(response.data)
         })
@@ -31,25 +35,32 @@ export default function StaffViewAppointment() {
 
     return (
         <div>
-            <h1>Staff View Appointment Page</h1>
+            <h1>Staff View Branch Monthly Revenue Page</h1>
             <div style={a_div_style}>
                 <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
             </div>
-            <button onClick={getResultList}>Show Appointments</button>
-            <br></br>
-            <input value='AppointmentNo' readOnly></input>
-            <input value='Service Type'readOnly></input>
-            <input value='Service Description' readOnly></input>
-            <input value='Date' readOnly></input>
-            <input value='License Plate'readOnly></input>
-            <br></br>
+            <label for='dateFrom'>Date From: </label>
+            <input id='dateFrom' name='dateFrom' rows="1" cols="20" ></input><br/>
+
+            <label for='dateTo'>Date To: </label>
+            <textarea id='dateTo' name='dateTo' rows="1" cols="20"></textarea><br/>
+
+            <button onClick={getResultList}>Show Branch</button>
+            <div>Follow this format: 2021-08-20 10:00:00</div>
+
+
             {resultList.map((val) => {
+                console.log(val)
+
                 return <div>
-                        <input value={val.appointmentNo} readOnly></input>
-                        <input value={val.serviceType} readOnly></input>
-                        <input value={val.serviceDescription} readOnly></input>
-                        <input value={val.date} readOnly></input>
-                        <input value={val.licensePlate} readOnly></input>
+                    <input Value='Branch Number' readOnly></input>
+                    <input value='Location' readOnly></input>
+                    <input value='Monthly Revenue' readOnly></input>
+
+                    <input value={val.branchNo} readOnly></input>
+                    <input value={val.location} readOnly></input>
+                    <input value={val.totalPayment} readOnly></input>
+
                 </div>
             })}
         </div>

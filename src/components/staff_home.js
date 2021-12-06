@@ -23,7 +23,7 @@ export default function StaffHome() {
                 <a href='' style={a_style}>my profile</a>
             </div>
             <div style={a_div_style}>
-                <a href='/staff-view-BRevenue' style={a_style}>View Branch Reveneue</a>
+                <a href='/staff-view-branchRevenue' style={a_style}>View Branch Reveneue</a>
             </div>
         </div>
     )

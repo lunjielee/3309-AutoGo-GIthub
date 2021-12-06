@@ -3,7 +3,8 @@ const app = express();
 const newConnection = require('./DBConnector');
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
-const path = require('path')
+const path = require('path');
+const e = require('express');
 
 app.use(express.urlencoded({
     extended: true
@@ -81,6 +82,31 @@ app.post('/api/add_appointment', function (req, res) {
         })
 })
 
+app.post('/api/staff_view_branchRevenue', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const username = req.body.userName
+    const password = req.body.password
+    //2021-08-20 10:00:00
+    conn.query(`SELECT b.branchNo, b.location, SUM(ser.price) as totalPayment
+    FROM services ser, client c, appointments a, branches b, serciveAppointment sa
+    WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo
+    AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
+    AND date >= '2021-08-01 ' AND date <= '2021-08-31 00:00:00'
+    GROUP BY b.branchNo
+    ORDER BY a.appointmentNo`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                res.send(rows)
+            }
+            
+        })
+})
+
 app.post('/api/staff_view_appointment', function (req, res) {
     conn = newConnection();
     conn.connect();
@@ -99,6 +125,27 @@ app.post('/api/staff_view_appointment', function (req, res) {
                 console.log(error);
             }
             else {
+                res.send(rows);
+            }
+        })
+})
+
+app.post('/api/guest_find_item', function(req, res){
+    conn=newConnection();
+    conn.connect();
+
+    const userName=req.body.userName
+    const password=req.body.password
+    const itemNo=req.body.itemNo
+
+    conn.query(`SELECT ac.item, ac.price, b.location, acb.inventory
+                FROM accessories ac, branches b, accessorybranch acb
+                WHERE ac.item = '${itemNo}' AND b.branchNo = acb.branchNo AND ac.item = acb.item
+                ORDER BY ac.price`,
+        (error,rows,fields)=>{
+            if(error){
+                console.log(error);
+            }else{
                 res.send(rows);
             }
         })
