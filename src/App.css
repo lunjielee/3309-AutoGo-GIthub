@@ -37,30 +37,32 @@
   }
 }
 
-
-.col{
+.col {
   height: 725px;
   width: 100%;
-  background-image : url(back.png);
+  background-image: url(back.png);
   padding: 100px;
   margin: 0px;
   overflow: auto;
-
-
 }
 
-p{
+p {
   font-size: 30px;
   color: aliceblue;
 }
 
-h1{
+h1 {
   font-size: 70px;
 }
 
-.signup_con{
-  background-image : url(bgSignup.png);
+.signup_con {
+  background-image: url(bgSignup.png);
   padding: 100px;
   margin: 0px;
   overflow: auto;
+}
+
+.staff {
+  background-color: #61dafb;
+  padding: 150px;
 }
