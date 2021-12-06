@@ -15,8 +15,9 @@ export default function GuestFindItem() {
         console.log(localStorage.currentUser);
         Axios.post(`http://${API_DOMAIN}:8081/api/guest_find_item`, {
             itemNo: itemNo
+
         }).then(response => {
-            console.log(response.data)
+            console.log(response.data);
             setItemList(response.data);
         })
     }

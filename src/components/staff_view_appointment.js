@@ -36,6 +36,7 @@ export default function StaffViewAppointment() {
                 <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
             </div>
             <button onClick={getResultList}>Show Appointments</button>
+            
             <br></br>
             <input value='AppointmentNo' readOnly></input>
             <input value='Service Type' readOnly></input>
@@ -43,6 +44,7 @@ export default function StaffViewAppointment() {
             <input value='Date' readOnly></input>
             <input value='License Plate' readOnly></input>
             <br></br>
+
             {resultList.map((val) => {
                 return <div>
                     <input value={val.appointmentNo} readOnly></input>

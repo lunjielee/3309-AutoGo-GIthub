@@ -18,6 +18,9 @@ export default function GuestHome() {
             <div class="mt-3">
                 <button onClick={() => { nav('/guest-find-item') }} id='guest-home-btn-4' class="btn btn-primary" type="button">Find Accessory Locations</button>
             </div>
+            <div style={a_div_style}>
+                <a href='/guest-show-branchAppointment' style={a_style}>Show Branch Appointments</a>
+            </div>
         </div>
     )
 
