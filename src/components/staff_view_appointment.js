@@ -21,7 +21,7 @@ export default function StaffViewAppointment() {
 
     return (
         <div>
-            <h1>Staff View Appointment Page</h1>
+            <h2>Staff View Appointment Page</h2>
             <div class="mt-3">
                 <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
             </div>
