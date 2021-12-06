@@ -33,7 +33,7 @@ export default function GuestHome() {
             </div>
 
             <div style={a_div_style}>
-                <a href='/staff_location' style={a_style}>staffs at each location</a>
+                <a href='/staff-location' style={a_style}>staffs at each location</a>
             </div>
         
         </div>
