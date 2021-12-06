@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Axios from 'axios';
 
 
-export default function GuestShowBranchAppointment() {
+export default function StaffShowBranchAppointment() {
 
     const a_style = {
         backgroundColor: "black",
