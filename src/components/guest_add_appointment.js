@@ -101,7 +101,7 @@ export default function AddAppointment() {
                 </div>
 
                 <div class="mb-3">
-                    <label for="location" class="form-label">Date</label>
+                    <label for="location" class="form-label">Location</label>
                     <select name="location" id="location" onChange={(event) => { setBranchNo(event.target.value) }}>
                         <option value="1">wonderland road 101</option>
                         <option value="2">western road 100</option>

@@ -6,7 +6,7 @@ export default class Home extends Component {
       <body>
         <div className="container">
           <div class="row justify-content-md-center mt-3 mb-3">
-            <div class="col">
+            <div class="col_back">
               <h1>
                 Welcome to <small class="text-muted">AutoGo</small>
               </h1>

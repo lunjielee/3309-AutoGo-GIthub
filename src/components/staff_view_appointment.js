@@ -51,7 +51,6 @@ export default function StaffViewAppointment() {
                     <input value={val.date} readOnly></input>
                     <input value={val.licensePlate} readOnly></input>
                 </div>
-
             })}
         </div>
     )

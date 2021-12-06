@@ -62,7 +62,7 @@ export default function Login() {
 
         <div class="row align-items-center">
 
-            <div class="col">
+            <div class="col_back">
                 <form class="form-horizontal" >
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setCurrentUser(event.target.value) }} name="inputUserName" type="text" class="form-control" id="inputUserNameStaff"
@@ -82,7 +82,7 @@ export default function Login() {
                 </form>
             </div>
 
-            <div class="col">
+            <div class="col_back">
                 <form class="form-horizontal" >
                     <div class="form-floating mb-3">
                         <input onChange={(event) => { setCurrentUser(event.target.value) }} name="inputUserName" type="text" class="form-control" id="inputUserNameGuest"

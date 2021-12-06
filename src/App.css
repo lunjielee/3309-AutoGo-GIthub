@@ -37,7 +37,7 @@
   }
 }
 
-.col {
+.col_back {
   height: 725px;
   width: 100%;
   background-image: url(back.png);
@@ -64,5 +64,10 @@ h1 {
 
 .staff {
   background-color: #61dafb;
+  padding: 150px;
+}
+
+.client {
+  background-color: plum;
   padding: 150px;
 }

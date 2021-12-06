@@ -46,7 +46,7 @@ app.post('/api/add_appointment', function (req, res) {
                             }
                         })
                 }
-                if (service2=='car wash' || service2=='inspection' || service2=='maintenance' || service2=='tire change') {
+                if (service2 == 'car wash' || service2 == 'inspection' || service2 == 'maintenance' || service2 == 'tire change') {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service2}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
@@ -56,7 +56,7 @@ app.post('/api/add_appointment', function (req, res) {
                             }
                         })
                 }
-                if (service3=='car wash' || service3=='inspection' || service3=='maintenance' || service3=='tire change') {
+                if (service3 == 'car wash' || service3 == 'inspection' || service3 == 'maintenance' || service3 == 'tire change') {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service3}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
@@ -66,7 +66,7 @@ app.post('/api/add_appointment', function (req, res) {
                             }
                         })
                 }
-                if (service4=='car wash' || service4=='inspection' || service4=='maintenance' || service4=='tire change') {
+                if (service4 == 'car wash' || service4 == 'inspection' || service4 == 'maintenance' || service4 == 'tire change') {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service4}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
@@ -80,6 +80,31 @@ app.post('/api/add_appointment', function (req, res) {
             }
         })
 })
+
+app.post('/api/staff_location', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+    const branchNo = req.body.branchNo;
+    console.log(req.body);
+
+   
+        conn.query(`SELECT s.name, s.position, b.location
+                FROM staffs s, branches b
+                WHERE s.branchNo = b.branchNo AND b.branchNo= ('${branchNo}')`,
+
+            (error, rows, fields) => {
+                if (error) { console.log(error); }
+                else {
+                    res.send(rows);
+                }
+
+            }
+            
+        )
+    
+})
+
+
 
 app.post('/api/staff_view_appointment', function (req, res) {
     conn = newConnection();
@@ -125,6 +150,11 @@ app.post('/api/guest_view_appointment', function (req, res) {
 
         })
 })
+
+
+
+
+
 
 app.post('/api/guest_delete_appointment', function (req, res) {
     conn = newConnection();
@@ -266,6 +296,10 @@ app.post('/api/guest_login', function (req, res) {
         }
     }
 })
+
+
+
+
 
 
 // It is safe to remove this I believe

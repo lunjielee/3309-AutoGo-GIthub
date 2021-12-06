@@ -14,9 +14,12 @@ export default function GuestHome() {
 
     const a_div_style = {
         margin: "20px",
+        color: "plum",
     }
 
     return (
+        
+        
         <div>Guest Home page<br />
             <div style={a_div_style}>
                 <a href='/guest-view-appointment' style={a_style}>view my appointments</a>
@@ -27,7 +30,14 @@ export default function GuestHome() {
             <div style={a_div_style}>
                 <a href='' style={a_style}>my profile</a>
             </div>
+
+            <div style={a_div_style}>
+                <a href='/staff_location' style={a_style}>staffs at each location</a>
+            </div>
+        
         </div>
+        
+        
     )
 
 }

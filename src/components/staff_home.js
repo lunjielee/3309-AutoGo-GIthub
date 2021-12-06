@@ -18,14 +18,13 @@ export default function StaffHome() {
       <h1>StaffHome page</h1>
       <br />
       <div style={a_div_style}>
-        <a href="/staff-view-appointment" style={a_style}>
-          view my appointments
-        </a>
+        <a href="/staff-view-appointment" style={a_style}>view my appointments</a>
       </div>
       <div style={a_div_style}>
-        <a href="" style={a_style}>
-          my profile
-        </a>
+        <a href="" style={a_style}>my profile</a>
+      </div>
+      <div style={a_div_style}>
+        <a href="/staff-location" style={a_style}>Staff Locations</a>
       </div>
     </div>
   );

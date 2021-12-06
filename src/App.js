@@ -17,6 +17,7 @@ import GuestViewAppointment from './components/guest_view_appointments';
 import StaffViewAppointment from './components/staff_view_appointment';
 import AddAppointment from './components/guest_add_appointment';
 import StaffViewBRevenue from './components/staff_view_branchRevenue';
+import StaffLocation from './components/staff_location';
 class App extends Component {
   render() {
     return (
@@ -61,6 +62,7 @@ class App extends Component {
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
             <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />}/>
             <Route path="/add-appointment" element={<AddAppointment />} />
+            <Route path="/staff-location" element={<StaffLocation />} />
           </Routes>
         </div>
         <footer className="py-3 my-4">
