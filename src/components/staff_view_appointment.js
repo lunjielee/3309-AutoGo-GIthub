@@ -6,18 +6,6 @@ export default function StaffViewAppointment() {
 
     const nav = useNavigate()
 
-    const a_style = {
-        backgroundColor: "black",
-        color: "white",
-        textDecoration: "none",
-        padding: "10px",
-        borderRadius: "10px",
-    }
-
-    const a_div_style = {
-        margin: "20px",
-    }
-
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
     const [resultList, setResultList] = useState([]);
 
