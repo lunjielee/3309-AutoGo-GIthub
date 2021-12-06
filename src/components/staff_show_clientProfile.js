@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from 'axios';
 
-export default function GuestShowProfile() {
+export default function StaffShowClientProfile() {
 
     const a_style = {
         backgroundColor: "black",
@@ -22,7 +22,7 @@ export default function GuestShowProfile() {
 
     const getClientList = ()=>{
         console.log(localStorage.currentUser);
-        Axios.post(`http://${API_DOMAIN}:8081/api/guest_show_profile`, {
+        Axios.post(`http://${API_DOMAIN}:8081/api/staff_show_clientProfile`, {
             clientNo: clientNo
 
         }).then(response => {
@@ -35,7 +35,7 @@ export default function GuestShowProfile() {
         <div>
             <h1>Your Personal Information</h1>
             <div style={a_div_style}>
-                <a href='/guest-home' style={a_style}>Back to Guest Home</a>
+                <a href='/staff-home' style={a_style}>Back to Staff Home</a>
             </div>
             
             <input onChange={(event)=> {setClientNo(event.target.value)}} id='clientNo' placeholder="Client Number"></input><br/>

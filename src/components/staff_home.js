@@ -22,6 +22,12 @@ export default function StaffHome() {
             <div style={a_div_style}>
                 <a href='/staff-view-branchRevenue' style={a_style}>View Branch Reveneue</a>
             </div>
+            <div style={a_div_style}>
+                <a href='/staff-show-branchAppointment' style={a_style}>Show Branch Appointments</a>
+            </div>
+            <div style={a_div_style}>
+                <a href='/staff-show-clientProfile' style={a_style}>client Information</a>
+            </div>
         </div>
     )
 

@@ -15,8 +15,8 @@ import StaffSignup from './components/staff_signup'
 import GuestSignup from './components/guest_signup'
 import GuestFindItem from './components/guest_find_item'
 import GuestViewAppointment from './components/guest_view_appointments';
-import GuestShowProfile from './components/guest_show_profile';
-import GuestShowBranchAppointment from './components/guest_show_branchAppointment';
+import StaffShowBranchAppointment from './components/staff_show_branchAppointment';
+import StaffShowClientProfile from './components/staff_show_clientProfile';
 import StaffViewAppointment from './components/staff_view_appointment';
 import StaffViewBranchRevenue from './components/staff_view_branchRevenue';
 import AddAppointment from './components/guest_add_appointment';
@@ -62,12 +62,12 @@ class App extends Component {
             <Route path="/guest-signup" element={<GuestSignup />} />
             <Route path="/guest-home" element={<GuestHome />} />
             <Route path="/staff-home" element={<StaffHome />} />
-            <Route path="/guest-show-profile" element={<GuestShowProfile/>}/>
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
             <Route path="/guest-find-item" element={<GuestFindItem/>}/>
-            <Route path="/guest-show-branchAppointment" element={<GuestShowBranchAppointment />}/>
+            <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile/>}/>
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
             <Route path="/staff-view-branchRevenue" element={<StaffViewBranchRevenue />}/>
+            <Route path="/staff-show-branchAppointment" element={<StaffShowBranchAppointment />}/>
             <Route path="/add-appointment" element={<AddAppointment />} />       
           </Routes>
         </div>

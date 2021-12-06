@@ -150,7 +150,7 @@ app.post('/api/staff_view_appointment', function (req, res) {
         })
 })
 
-app.post('/api/guest_show_profile', function (req, res) {
+app.post('/api/staff_show_clientProfile', function (req, res) {
     conn = newConnection();
     conn.connect();
 
