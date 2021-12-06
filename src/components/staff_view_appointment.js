@@ -4,17 +4,7 @@ import Axios from 'axios';
 
 export default function StaffViewAppointment() {
 
-    const a_style = {
-        backgroundColor: "black",
-        color: "white",
-        textDecoration: "none",
-        padding: "10px",
-        borderRadius: "10px",
-    }
-
-    const a_div_style = {
-        margin: "20px",
-    }
+    const nav = useNavigate()
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
     const [resultList, setResultList] = useState([]);
@@ -31,29 +21,33 @@ export default function StaffViewAppointment() {
 
     return (
         <div>
-            <h1>Staff View Appointment Page</h1>
-            <div style={a_div_style}>
-                <a href='/staff-home' style={a_style}>Back to Staff Home Page</a><br />
+            <h2>Staff View Appointment Page</h2>
+            <div class="mt-3">
+                <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
             </div>
-            <button onClick={getResultList} type='button' class="btn btn-primary">Show Appointments</button>
-            
-            <br></br>
-            <input value='AppointmentNo' readOnly></input>
-            <input value='Service Type' readOnly></input>
-            <input value='Service Description' readOnly></input>
-            <input value='Date' readOnly></input>
-            <input value='License Plate' readOnly></input>
-            <br></br>
-
-            {resultList.map((val) => {
-                return <div>
-                    <input value={val.appointmentNo} readOnly></input>
-                    <input value={val.serviceType} readOnly></input>
-                    <input value={val.serviceDescription} readOnly></input>
-                    <input value={val.date} readOnly></input>
-                    <input value={val.licensePlate} readOnly></input>
+            <div class="mt-3">
+                <button onClick={getResultList} id='staff-view-btn-2' class="btn btn-primary" type="button">Show Appointments</button>
+            </div>
+            <div class="mt-3">
+                <div>
+                    <div class="row">
+                        <div class="border border-primary col">AppointmentNo</div>
+                        <div class="border border-primary col">Service Type</div>
+                        <div class="border border-primary col">Service Description</div>
+                        <div class="border border-primary col">Date</div>
+                        <div class="border border-primary col">License Plate</div>
+                    </div>
+                    {resultList.map((val) => {
+                        return <div class="row">
+                            <div class="border col">{val.appointmentNo}</div>
+                            <div class="border col">{val.serviceType}</div>
+                            <div class="border col">{val.serviceDescription}</div>
+                            <div class="border col">{val.date}</div>
+                            <div class="border col">{val.licensePlate}</div>
+                        </div>
+                    })}
                 </div>
-            })}
+            </div>
         </div>
     )
 }

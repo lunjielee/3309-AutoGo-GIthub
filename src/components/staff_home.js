@@ -1,43 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function StaffHome() {
-  const a_style = {
-    backgroundColor: "black",
-    color: "white",
-    textDecoration: "none",
-    padding: "10px",
-    borderRadius: "10px",
-    fontSize:"bold"
-  };
-
-  const a_div_style = {
-    margin: "20px",
-  }
-
-
-    return (
-        <div>Staff Home page<br />
-
-            <div style={a_div_style}>
-                <a href='/staff-view-appointment' style={a_style}>View My Appointments</a>
-            </div>
-
-        </div>
-    )
-
+  const nav = useNavigate()
   return (
-    <div className="staff">
-      <h1>StaffHome page</h1>
-      <br />
-      <div style={a_div_style}>
-        <a href="/staff-view-appointment" style={a_style}>view my appointments</a>
+    <div>
+      <h1>Staff Home page</h1>
+      <div class="mt-3">
+        <button onClick={() => { nav('/staff-view-appointment') }} id='staff-home-btn-1' class="btn btn-primary" type="button">View My Appointments</button>
       </div>
-      <div style={a_div_style}>
-        <a href="" style={a_style}>my profile</a>
+      <div class="mt-3">
+        <button onClick={() => { nav('/staff-view-branchRevenue') }} id='guest-home-btn-3' class="btn btn-primary" type="button">View Branch Revenue</button>
       </div>
-      <div style={a_div_style}>
-        <a href="/staff-location" style={a_style}>Staff Locations</a>
+      <div class="mt-3">
+        <button onClick={() => { nav('/staff-show-branchAppointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Show Branch Appointments</button>
       </div>
-    </div>
-  );
+      <div class="mt-3">
+        <button onClick={() => { nav('/staff-show-clientProfile') }} id='guest-home-btn-4' class="btn btn-primary" type="button">Client Information</button>
+      </div>
+    </div >
+  )
 }

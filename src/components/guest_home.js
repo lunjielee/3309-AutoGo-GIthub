@@ -1,40 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Axios from 'axios';
 
 export default function GuestHome() {
-
-    const a_style = {
-        backgroundColor: "black",
-        color: "white",
-        textDecoration: "none",
-        padding: "10px",
-        borderRadius: "10px",
-    }
-
-    const a_div_style = {
-        margin: "20px",
-        color: "plum",
-    }
-
+    const nav = useNavigate()
     return (
-        
-        
-        <div>Guest Home page<br />
-
-            <div style={a_div_style}>
-                <a href='/guest-view-appointment' style={a_style}>View My Appointments</a>
+        <div>
+            <h1>Guest Home page</h1>
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-view-appointment') }} id='guest-home-btn-1' class="btn btn-primary" type="button">View My Appointments</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/add-appointment' style={a_style}>Book A Appointment</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/add-appointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Book a Appointment</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/guest-find-item' style={a_style}>Search Accessory</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-find-item') }} id='guest-home-btn-3' class="btn btn-primary" type="button">Search Accessory</button>
             </div>
-        
+            <div class="mt-3">
+                <button onClick={() => { nav('/staff-location') }} id='guest-home-btn-4' class="btn btn-primary" type="button">Staffs at Each Location</button>
+            </div>
         </div>
-        
-        
     )
 
 }

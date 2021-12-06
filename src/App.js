@@ -43,12 +43,12 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <Link to={"/staff-signup"} className="nav-link">
-                  Staff Signup
+                  Staff Sign Up
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to={"/guest-signup"} className="nav-link">
-                  Guest Signup
+                  Guest Sign Up
                 </Link>
               </li>
             </div>
@@ -67,15 +67,15 @@ class App extends Component {
             <Route path="/staff-home" element={<StaffHome />} />
             <Route path="/staff-manager-home" element={<StaffManagerHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
-            <Route path="/guest-find-item" element={<GuestFindItem/>}/>
-            <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile/>}/>
+            <Route path="/guest-find-item" element={<GuestFindItem />} />
+            <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile />} />
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
-            <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />}/>
+            <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />} />
             <Route path="/add-appointment" element={<AddAppointment />} />
             <Route path="/staff-location" element={<StaffLocation />} />
-            <Route path="/staff-view-branchRevenue" element={<StaffViewBranchRevenue />}/>
-            <Route path="/staff-show-branchAppointment" element={<StaffShowBranchAppointment />}/>
-            <Route path="/add-appointment" element={<AddAppointment />} />       
+            <Route path="/staff-view-branchRevenue" element={<StaffViewBranchRevenue />} />
+            <Route path="/staff-show-branchAppointment" element={<StaffShowBranchAppointment />} />
+            <Route path="/add-appointment" element={<AddAppointment />} />
           </Routes>
         </div>
         <footer className="py-3 my-4">

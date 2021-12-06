@@ -35,70 +35,33 @@ export default function StaffSingup() {
     }
   };
   return (
-    (<div>staff signup page</div>),
-    (
-        <form>
-          <div class="mb-3">
-            <label for="username" class="form-label">
-              Username
-            </label>
-            <input
-              onChange={(event) => {
-                setUsername(event.target.value);
-              }}
-              class="form-control"
-              id="username"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">
-              Password
-            </label>
-            <input
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-              type="password"
-              class="form-control"
-              id="password"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="position" class="form-label">
-              Position (optional)
-            </label>
-            <input
-              onChange={(event) => {
-                setPosition(event.target.value);
-              }}
-              class="form-control"
-              id="position"
-              placeholder="E.g. manager"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="branchNo" class="form-label">
-              Branch Number
-            </label>
-            <input
-              onChange={(event) => {
-                setBranchNo(event.target.value);
-              }}
-              class="form-control"
-              id="branchNo"
-              required
-            />
-          </div>
-
-          <button onClick={staffSignup} type="button" class="btn btn-primary">
-            Signup As Staff
-          </button>
-        </form>
-    )
-  );
+    <div class="row align-items-center w-25 m-auto">
+      <h2>
+        Welcome <small class="text-muted">New staff</small>
+      </h2>
+      <form>
+        <div class="form-floating mb-3">
+          <input onChange={(event) => { setUsername(event.target.value) }} name="inputUserName" type="text" class="form-control" id="username_staff"
+            placeholder="User name" required />
+          <label for="username" class="form-label">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input onChange={(event) => { setPassword(event.target.value) }} name="inputPassword" type="password" class="form-control" id="password_staff"
+            placeholder="Password" required />
+          <label for="password" class="form-label">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input onChange={(event) => { setPosition(event.target.value) }} name="inputPosition" type="password" class="form-control" id="position_staff"
+            placeholder="E.g. manager" />
+          <label for="position" class="form-label">Position (Optional)</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input onChange={(event) => { setBranchNo(event.target.value); }} name="inputBranchNo" type="password" class="form-control" id="branchNo_staff"
+            placeholder="E.g. 1" required />
+          <label for="branchNo" class="form-label"> Branch Number </label>
+        </div>
+        <button onClick={staffSignup} type="button" class="btn btn-primary">Sign Up as Staff</button>
+      </form>
+    </div>
+  )
 }

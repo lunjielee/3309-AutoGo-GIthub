@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
 export default function StaffLocation() {
+    const nav = useNavigate()
     const a_style = {
         backgroundColor: "black",
         color: "white",
@@ -33,42 +34,41 @@ export default function StaffLocation() {
             console.log("back")
             console.log(response)
             setStaffList(response.data)
-            
+
         })
     }
 
     return (
         <div>
-            <h1>Check which staff is working on each branch</h1>
-            <div style={a_div_style}>
-                <a href='/staff-manager-home' style={a_style}>Back to Home Page</a><br />
+            <h2>Check which staff is working on each branch</h2>
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-home') }} id='guest-add-appointment-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>
-            <br></br>
-
-
-            <div class="select branch">
-                <select name="branch" id="branch" onChange={(event) => { setBranchNo(event.target.value) }}>
-                    <option value="1">branch 1</option>
-                    <option value="2">branch 2</option>
-                    <option value="3">branch 3</option>
-                    <option value="4">branch 4 </option>
+            <div class="mb-3 w-25 m-auto">
+                <label for="service" class="form-label">Branch No</label>
+                <select class="form-select" name="branch" id="branch" onChange={(event) => { setBranchNo(event.target.value) }}>
+                    <option value="1">Branch 1</option>
+                    <option value="2">Branch 2</option>
+                    <option value="3">Branch 3</option>
+                    <option value="4">Branch 4</option>
                 </select>
             </div>
-
-
-            <button onClick={submitSelection} type='button' class="btn btn-primary">View</button>
-            <br></br>
-            <input value='Name' readOnly></input>
-            <input value='Position' readOnly></input>
-            <input value='Location' readOnly></input>
-            <br></br>
-            {staffList.map((val) => {
-                return <div>
-                    <input value={val.name} readOnly></input>
-                    <input value={val.position} readOnly></input>
-                    <input value={val.location} readOnly></input>
+            <button onClick={submitSelection} type='button' class="btn btn-primary">Submit</button>
+            <div class="mt-3">
+                <div class="row">
+                    <div class="border border-primary col">Name</div>
+                    <div class="border border-primary col">Position</div>
+                    <div class="border border-primary col">Location</div>
                 </div>
-            })}
+                {staffList.map((val) => {
+                    console.log(val)
+                    return <div class="row">
+                        <div class="border col">{val.name}</div>
+                        <div class="border col">{val.position}</div>
+                        <div class="border col">{val.location} </div>
+                    </div>
+                })}
+            </div>
         </div>
     )
 }

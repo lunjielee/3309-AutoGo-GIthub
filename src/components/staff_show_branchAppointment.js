@@ -1,23 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
 
 export default function StaffShowBranchAppointment() {
 
-    const a_style = {
-        backgroundColor: "black",
-        color: "white",
-        textDecoration: "none",
-        padding: "10px",
-        borderRadius: "10px",
-    }
+    const nav = useNavigate()
 
-    const a_div_style = {
-        margin: "20px",
-    }
-
-    const button_style={
-        marign:"10px"
+    const button_style = {
+        marign: "10px"
     }
 
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
@@ -26,7 +17,7 @@ export default function StaffShowBranchAppointment() {
     const [carlist, setCarList] = useState([]);
 
 
-    const getCarList = ()=>{
+    const getCarList = () => {
         console.log(localStorage.currentUser);
         Axios.post(`http://${API_DOMAIN}:8081/api/staff_show_branchAppointment`, {
             branchNo: branchNo
@@ -37,33 +28,39 @@ export default function StaffShowBranchAppointment() {
         })
     }
 
-    return(
+    return (
         <div>
-            <h1>Show Branch Appointment Of Each Car</h1>
-            <div style={a_div_style}>
-                <a href='/staff-manager-home' style={a_style}>Back to Manager Home</a>
+            <h2>Show Branch Appointment Of Each Car</h2>
+            <div class="mt-3 mb-3">
+                <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
             </div>
-            <input onChange={(event)=> {setBranchNo(event.target.value)}} id='branchNo' placeholder='Branch No'></input><br/>
-
-            <button onClick={getCarList} style={button_style} type='button' class="btn btn-primary">Show Car List</button>
-
-            <br></br>
-            <input value='License Plate'readOnly></input>
-            <input value='Color' readOnly></input>
-            <input value='Model' readOnly></input>
-            <input value='Make' readOnly></input>
-            <input value='Branch Number' readOnly></input>
-
-            {carlist.map((val)=>{
-                console.log(val)
-                return <div>
-                    <input value={val.licensePlate} readOnly></input>
-                    <input value={val.color} readOnly></input>
-                    <input value={val.model} readOnly></input>
-                    <input value={val.make} readOnly></input>
-                    <input value={val.branchNo} readOnly></input>
+            <div class="form-floating mb-3 w-25 m-auto">
+                <input onChange={(event) => { setBranchNo(event.target.value) }} name="inputBranchNo" type="text" class="form-control" id='branchNo'
+                    placeholder='E.g. 1' required />
+                <label for="branchNo" class="form-label">Branch No</label>
+            </div>
+            <div>
+                <button id='staff-view-btn-2' class="btn btn-primary" type="button" onClick={getCarList}>Show Car List</button>
+            </div>
+            <div class="mt-3">
+                <div class="row">
+                    <div class="border border-primary col">License Plate</div>
+                    <div class="border border-primary col">Color</div>
+                    <div class="border border-primary col">Model</div>
+                    <div class="border border-primary col">Make</div>
+                    <div class="border border-primary col">Branch Number</div>
                 </div>
-            })}
+                {carlist.map((val) => {
+                    console.log(val)
+                    return <div class="row">
+                        <div class="border col">{val.licensePlate}</div>
+                        <div class="border col">{val.color}</div>
+                        <div class="border col">{val.model} </div>
+                        <div class="border col">{val.make}</div>
+                        <div class="border col">{val.branchNo}</div>
+                    </div>
+                })}
+            </div>
         </div>
     )
 }
