@@ -81,6 +81,7 @@ app.post('/api/add_appointment', function (req, res) {
             }
         })
 })
+
 app.post('/api/staff_show_branchAppointment', function (req, res) {
     conn = newConnection();
     conn.connect();
@@ -127,6 +128,29 @@ app.post('/api/staff_view_branchRevenue', function (req, res) {
         })
 })
 
+app.post('/api/staff_location', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+    const branchNo = req.body.branchNo;
+    console.log(req.body);
+
+   
+        conn.query(`SELECT s.name, s.position, b.location
+                FROM staffs s, branches b
+                WHERE s.branchNo = b.branchNo AND b.branchNo= ('${branchNo}')`,
+
+            (error, rows, fields) => {
+                if (error) { console.log(error); }
+                else {
+                    res.send(rows);
+                }
+
+            }
+            
+        )
+    
+})
+
 app.post('/api/staff_view_appointment', function (req, res) {
     conn = newConnection();
     conn.connect();
@@ -145,6 +169,22 @@ app.post('/api/staff_view_appointment', function (req, res) {
                 console.log(error);
             }
             else {
+                res.send(rows);
+            }
+        })
+})
+
+app.post('/api/staff_show_clientProfile', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const clientNo = req.body.clientNo
+
+    conn.query(`SELECT * FROM clients Where clientNo='${clientNo}'`,
+        (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+            } else {
                 res.send(rows);
             }
         })

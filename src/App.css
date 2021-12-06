@@ -38,9 +38,9 @@
   }
 }
 
-.colWithBackground {
+.col_back {
   height: 725px;
-  width: 100%;
+  width: auto;
   background-image: url(back.png);
   padding: 100px;
   margin: 0px;
@@ -66,4 +66,32 @@ h1 {
 .staff {
   background-color: #61dafb;
   padding: 150px;
+  <<<<<<< HEAD=======
+}
+
+.client {
+  background-color: plum;
+  padding: 150px;
+}
+
+.staffLogin {
+  border-right: black 5px solid;
+  padding: 40px;
+}
+
+#staff-login-btn {
+  width: 560px;
+}
+
+#staff-login-btn:hover {
+  font: bold;
+}
+
+#guest-login-btn {
+  width: 640px;
+}
+
+#guest-login-btn:hover {
+  font: bold;
+  >>>>>>>c761b4a46b8ec3f57154ecd9da5ff3ad158cae45
 }
