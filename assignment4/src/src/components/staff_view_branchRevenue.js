@@ -25,9 +25,9 @@ export default function StaffViewBranchRevenue() {
 
     return (
         <div>
-            <h2>Staff View Branch Monthly Revenue Page</h2>
+            <h2>View Branch Monthly Revenue Page</h2>
             <div class="mt-3">
-                <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
+                <button onClick={() => { nav(-1) }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>
             <div class="input-group mb-3 mt-3 w-50 m-auto">
                 <input onChange={(event) => { setDateFrom(event.target.value) }} id='dateFrom' type="text" class="form-control" placeholder="E.g. 2021-08-01 00:00:00" aria-label="Date From"></input>

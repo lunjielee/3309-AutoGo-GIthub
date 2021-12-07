@@ -30,7 +30,7 @@ export default function StaffShowClientProfile() {
         <div>
             <h2>Your Personal Information</h2>
             <div class="mt-3 mb-3">
-                <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
+                <button onClick={() => { nav(-1) }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>
             <div class="form-floating mb-3 w-25 m-auto">
                 <input onChange={(event) => { setClientNo(event.target.value) }} name="inputClientNo" type="text" class="form-control" id='clientNo'

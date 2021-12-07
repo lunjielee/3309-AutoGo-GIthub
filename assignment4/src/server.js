@@ -41,7 +41,10 @@ app.post('/api/add_appointment', function (req, res) {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service1}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
-                            if (error) { console.log(error); }
+                            if (error) {
+                                console.log(error);
+                                conn.end()
+                            }
                             else {
                                 console.log('INSERT service1 SUCCESS')
                             }
@@ -51,7 +54,10 @@ app.post('/api/add_appointment', function (req, res) {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service2}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
-                            if (error) { console.log(error); }
+                            if (error) {
+                                console.log(error);
+                                conn.end()
+                            }
                             else {
                                 console.log('INSERT service2 SUCCESS')
                             }
@@ -61,7 +67,10 @@ app.post('/api/add_appointment', function (req, res) {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service3}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
-                            if (error) { console.log(error); }
+                            if (error) {
+                                console.log(error);
+                                conn.end()
+                            }
                             else {
                                 console.log('INSERT service3 SUCCESS')
                             }
@@ -71,9 +80,13 @@ app.post('/api/add_appointment', function (req, res) {
                     conn.query(`INSERT INTO serciveappointment VALUES('${service4}',(${thisAppointmentNo}))`
                         ,
                         (error, rows, fields) => {
-                            if (error) { console.log(error); }
+                            if (error) {
+                                console.log(error);
+                                conn.end()
+                            }
                             else {
                                 console.log('INSERT service4 SUCCESS')
+                                conn.end()
                             }
                         })
                 }
@@ -95,9 +108,11 @@ app.post('/api/staff_show_branchAppointment', function (req, res) {
     AND b.branchNo='${branchNo}'`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(eror);
             }
             else {
+                conn.end()
                 res.send(rows)
             }
         })
@@ -111,7 +126,7 @@ app.post('/api/staff_view_branchRevenue', function (req, res) {
     const dateTo = req.body.dateTo
     //2021-08-20 10:00:00
     conn.query(`SELECT b.branchNo, b.location, SUM(ser.price) as totalPayment
-    FROM services ser, client c, appointments a, branches b, serciveAppointment sa
+    FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
     WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo
     AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
     AND date >= '${dateFrom}' AND date <= '${dateTo}'
@@ -119,9 +134,11 @@ app.post('/api/staff_view_branchRevenue', function (req, res) {
     ORDER BY a.appointmentNo`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             }
             else {
+                conn.end()
                 res.send(rows)
             }
 
@@ -140,8 +157,12 @@ app.post('/api/staff_location', function (req, res) {
                 WHERE s.branchNo = b.branchNo AND b.branchNo= ('${branchNo}')`,
 
         (error, rows, fields) => {
-            if (error) { console.log(error); }
+            if (error) {
+                conn.end()
+                console.log(error);
+            }
             else {
+                conn.end()
                 res.send(rows);
             }
 
@@ -166,9 +187,11 @@ app.post('/api/staff_view_appointment', function (req, res) {
                 `,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             }
             else {
+                conn.end()
                 res.send(rows);
             }
         })
@@ -183,11 +206,52 @@ app.post('/api/staff_show_clientProfile', function (req, res) {
     conn.query(`SELECT * FROM clients Where clientNo='${clientNo}'`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             } else {
+                conn.end()
                 res.send(rows);
             }
         })
+})
+
+app.post('/api/guest_register_car', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const licensePlate = req.body.licensePlate;
+    const model = req.body.model;
+    const make = req.body.make;
+    const color = req.body.color;
+    const clientNo = req.body.clientNo;
+
+    conn.query("INSERT INTO cars (`licensePLate`, `model`, `make`, `color`, `clientNo`) VALUES (?,?,?,?,?)", [licensePlate, model, make, color, clientNo],
+        (error, rows, fields) => {
+            if (error) {
+                conn.end()
+                console.log(error);
+            } else {
+                conn.end()
+                res.send("success");
+            }
+        })
+})
+
+app.post('/api/guest_get_all_car', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const clientNo = req.body.clientNo
+    conn.query(`SELECT licensePLate, model, make, color FROM cars WHERE clientNo='${clientNo}'`, (error, rows) => {
+        if (error) {
+            conn.end()
+            console.log(error);
+        } else {
+            conn.end()
+            res.send(rows);
+        }
+    })
+
 })
 
 app.post('/api/guest_find_item', function (req, res) {
@@ -202,12 +266,16 @@ app.post('/api/guest_find_item', function (req, res) {
                 ORDER BY ac.price`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             } else {
+                conn.end()
                 res.send(rows);
             }
         })
 })
+
+
 
 app.post('/api/guest_view_appointment', function (req, res) {
     conn = newConnection();
@@ -222,9 +290,11 @@ app.post('/api/guest_view_appointment', function (req, res) {
                 ORDER BY a.date;`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             }
             else {
+                conn.end()
                 res.send(rows);
             }
 
@@ -240,9 +310,11 @@ app.post('/api/guest_delete_appointment', function (req, res) {
     conn.query(`DELETE FROM appointments WHERE appointmentNo=${appointmentNo};`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             }
             else {
+                conn.end()
                 res.send('DELETE appointment SUCCESS');
             }
 
@@ -256,15 +328,17 @@ app.post('/api/guest_view_receipt', function (req, res) {
     const appointmentNo = req.body.appointmentNo
 
     conn.query(`SELECT a.appointmentNo, c.name as clientName,  a.date, b.location, SUM(ser.price) as totalPayment
-                FROM  services ser, client c, appointments a, branches b, serciveAppointment sa
+                FROM  services ser, clients c, appointments a, branches b, serciveAppointment sa
                 WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo AND a.appointmentNo = ${appointmentNo}  AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
                 GROUP BY a.appointmentNo 
                 ORDER BY a.appointmentNo;`,
         (error, rows, fields) => {
             if (error) {
+                conn.end()
                 console.log(error);
             }
             else {
+                conn.end()
                 res.send(rows);
             }
 
@@ -285,9 +359,11 @@ app.post('/api/staff_signup', function (req, res) {
         conn.query("INSERT INTO staffs VALUES (?,?,?,?,?)", ['NULL', username, password, position, branchNo]
             , (error, rows, fields) => {
                 if (error) {
+                    conn.end()
                     console.log(error)
                 } else {
                     console.log(req.body.username + ' ' + req.body.password + ' ' + req.body.position + ' ')
+                    conn.end()
                     res.send("200 OK");
                 }
             })
@@ -309,8 +385,10 @@ app.post('/api/guest_signup', function (req, res) {
             , (error, rows, fields) => {
                 if (error) {
                     console.log(error)
+                    conn.end()
                 } else {
                     console.log(req.body.username + ' ' + req.body.password)
+                    conn.end()
                     res.send("200 OK");
                 }
             })
@@ -330,17 +408,18 @@ app.post('/api/staff_login', function (req, res) {
                 if (error) {
                     console.log(error)
                 }
-                if(results){
+                if (results) {
                     if (results.length > 0) {
                         res.cookie('user', userName);
                         res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
                         // Send the logged in staff data
+                        conn.end()
                         res.send(results);
                     }
                     res.end();
                 }
             })
-        } 
+        }
     }
 })
 
@@ -356,17 +435,21 @@ app.post('/api/guest_login', function (req, res) {
         if (userName && password) {
             conn.query('SELECT * FROM clients WHERE name = ? AND password = ?', [userName, password], (error, results) => {
                 if (error) {
+                    conn.end()
                     console.log(error)
                 }
-                if (results.length > 0) {
-                    res.cookie('user', userName);
-                    res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
-                    // Send logged in client data
-                    res.send(results);
+                if (results) {
+                    if (results.length > 0) {
+                        res.cookie('user', userName);
+                        res.cookie('password', password, { signed: true, maxAge: 10 * 60 * 1000 });
+                        // Send logged in client data
+                        conn.end()
+                        res.send(results);
+                    }
                 }
                 res.end();
             });
-        } 
+        }
     }
 })
 

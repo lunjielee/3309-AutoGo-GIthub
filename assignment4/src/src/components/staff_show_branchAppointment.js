@@ -7,10 +7,6 @@ export default function StaffShowBranchAppointment() {
 
     const nav = useNavigate()
 
-    const button_style = {
-        marign: "10px"
-    }
-
     const API_DOMAIN = process.env.API_DOMAIN || 'localhost';
 
     const [branchNo, setBranchNo] = useState();
@@ -30,9 +26,9 @@ export default function StaffShowBranchAppointment() {
 
     return (
         <div>
-            <h2>Show Branch Appointment Of Each Car</h2>
+            <h2>Show Branch Appointment</h2>
             <div class="mt-3 mb-3">
-                <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
+                <button onClick={() => { nav(-1) }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>
             <div class="form-floating mb-3 w-25 m-auto">
                 <input onChange={(event) => { setBranchNo(event.target.value) }} name="inputBranchNo" type="text" class="form-control" id='branchNo'

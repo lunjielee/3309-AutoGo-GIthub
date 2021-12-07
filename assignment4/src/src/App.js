@@ -15,6 +15,7 @@ import StaffSignup from './components/staff_signup'
 import GuestSignup from './components/guest_signup'
 import GuestFindItem from './components/guest_find_item'
 import GuestViewAppointment from './components/guest_view_appointments';
+import GuestRegisterCar from './components/guest_register_car';
 import StaffShowBranchAppointment from './components/staff_show_branchAppointment';
 import StaffShowClientProfile from './components/staff_show_clientProfile';
 import StaffViewAppointment from './components/staff_view_appointment';
@@ -27,10 +28,15 @@ import StaffManagerHome from './components/staff_manager_home';
 
 class App extends Component {
   render() {
+    const logout = () => {
+      localStorage.removeItem("clientNo")
+      localStorage.removeItem("password")
+      localStorage.removeItem("currentUser")
+    }
     return (
       <div className="App" >
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <div className="container-fluid">
+          <div onClick={logout} className="container-fluid">
             <Link to={"/"} className="navbar-brand">
               AutoGo
             </Link>
@@ -68,6 +74,7 @@ class App extends Component {
             <Route path="/staff-manager-home" element={<StaffManagerHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
             <Route path="/guest-find-item" element={<GuestFindItem />} />
+            <Route path="/guest-register-car" element={<GuestRegisterCar />} />
             <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile />} />
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
             <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />} />

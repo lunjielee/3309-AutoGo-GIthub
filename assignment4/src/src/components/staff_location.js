@@ -42,7 +42,7 @@ export default function StaffLocation() {
         <div>
             <h2>Check which staff is working on each branch</h2>
             <div class="mt-3">
-                <button onClick={() => { nav('/guest-home') }} id='guest-add-appointment-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
+                <button onClick={() => { nav(-1) }} id='guest-add-appointment-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>
             <div class="mb-3 w-25 m-auto">
                 <label for="service" class="form-label">Branch No</label>
