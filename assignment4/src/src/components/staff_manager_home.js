@@ -1,36 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function StaffManagerHome() {
-  const a_style = {
-    backgroundColor: "black",
-    color: "white",
-    textDecoration: "none",
-    padding: "10px",
-    borderRadius: "10px",
-    fontSize:"bold"
-  };
-
-  const a_div_style = {
-    margin: "20px",
-  }
-
+    const nav = useNavigate()
 
     return (
-        <div>Manager Home page<br />
-
-            <div style={a_div_style}>
-                <a href='/staff-view-branchRevenue' style={a_style}>View Branch Reveneue</a>
+        <div>
+            <h2>Manager Home page</h2>
+            <div class="mt-3">
+                <button onClick={() => { nav('/staff-view-branchRevenue') }} id='staff-home-btn-1' class="btn btn-primary" type="button">View Branch Revenue</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/staff-show-branchAppointment' style={a_style}>Show Branch Appointments</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/staff-show-branchAppointment') }} id='staff-home-btn-2' class="btn btn-primary" type="button">Show Branch Appointments</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/staff-show-clientProfile' style={a_style}>Client Information</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/staff-show-clientProfile') }} id='staff-home-btn-3' class="btn btn-primary" type="button">Client Information</button>
             </div>
-            <div style={a_div_style}>
-                <a href='/staff-location' style={a_style} >staffs at each location</a>
+            <div class="mt-3">
+                <button onClick={() => { nav('/staff-location') }} id='staff-home-btn-4' class="btn btn-primary" type="button">Staff at Each Location</button>
             </div>
-
         </div>
     )
 }

@@ -5,7 +5,7 @@ export default function GuestHome() {
     const nav = useNavigate()
     return (
         <div>
-            <h1>Guest Home page</h1>
+            <h2>Guest Home page</h2>
             <div class="mt-3">
                 <button onClick={() => { nav('/guest-view-appointment') }} id='guest-home-btn-1' class="btn btn-primary" type="button">View My Appointments</button>
             </div>

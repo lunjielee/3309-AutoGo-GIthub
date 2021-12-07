@@ -23,7 +23,7 @@ export default function StaffViewAppointment() {
         <div>
             <h2>Staff View Appointment Page</h2>
             <div class="mt-3">
-                <button onClick={() => { nav('/staff-home') }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Staff Home Page</button>
+                <button onClick={() => { nav(-1) }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>
             <div class="mt-3">
                 <button onClick={getResultList} id='staff-view-btn-2' class="btn btn-primary" type="button">Show Appointments</button>
