@@ -18,6 +18,9 @@ export default function GuestHome() {
             <div class="mt-3">
                 <button onClick={() => { nav('/staff-location') }} id='guest-home-btn-4' class="btn btn-primary" type="button">Staffs at Each Location</button>
             </div>
+            <div class="mt-3">
+                <button onClick={() => { nav('/guest-register-car') }} id='guest-home-btn-4' class="btn btn-primary" type="button">Register Your Car</button>
+            </div>
         </div>
     )
 

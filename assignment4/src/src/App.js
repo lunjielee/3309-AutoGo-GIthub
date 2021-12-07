@@ -15,6 +15,7 @@ import StaffSignup from './components/staff_signup'
 import GuestSignup from './components/guest_signup'
 import GuestFindItem from './components/guest_find_item'
 import GuestViewAppointment from './components/guest_view_appointments';
+import GuestRegisterCar from './components/guest_register_car';
 import StaffShowBranchAppointment from './components/staff_show_branchAppointment';
 import StaffShowClientProfile from './components/staff_show_clientProfile';
 import StaffViewAppointment from './components/staff_view_appointment';
@@ -68,6 +69,7 @@ class App extends Component {
             <Route path="/staff-manager-home" element={<StaffManagerHome />} />
             <Route path="/guest-view-appointment" element={<GuestViewAppointment />} />
             <Route path="/guest-find-item" element={<GuestFindItem />} />
+            <Route path="/guest-register-car" element={<GuestRegisterCar/>}/>
             <Route path="/staff-show-clientProfile" element={<StaffShowClientProfile />} />
             <Route path="/staff-view-appointment" element={<StaffViewAppointment />} />
             <Route path="/staff-view-BRevenue" element={<StaffViewBRevenue />} />

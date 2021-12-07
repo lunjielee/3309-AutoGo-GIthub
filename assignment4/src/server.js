@@ -218,6 +218,28 @@ app.post('/api/staff_show_clientProfile', function (req, res) {
         })
 })
 
+app.post('/api/guest_register_car', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const licensePlate = req.body.licensePlate;
+    const model = req.body.model;
+    const make = req.body.make;
+    const color = req.body.color;
+    const clientNo = req.body.clientNo;
+
+    conn.query("INSERT INTO cars (`licensePLate`, `model`, `make`, `color`, `clientNo`) VALUES (?,?,?,?,?)",[licensePlate,model,make,color,clientNo],
+        (error, rows, fields) => {
+            if (error) {
+                conn.end()
+                console.log(error);
+            } else {
+                conn.end()
+                res.send("success");
+            }
+        })
+})
+
 app.post('/api/guest_find_item', function (req, res) {
     conn = newConnection();
     conn.connect();
@@ -238,6 +260,8 @@ app.post('/api/guest_find_item', function (req, res) {
             }
         })
 })
+
+
 
 app.post('/api/guest_view_appointment', function (req, res) {
     conn = newConnection();
