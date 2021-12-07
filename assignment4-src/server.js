@@ -111,7 +111,7 @@ app.post('/api/staff_view_branchRevenue', function (req, res) {
     const dateTo = req.body.dateTo
     //2021-08-20 10:00:00
     conn.query(`SELECT b.branchNo, b.location, SUM(ser.price) as totalPayment
-    FROM services ser, client c, appointments a, branches b, serciveAppointment sa
+    FROM services ser, clients c, appointments a, branches b, serciveAppointment sa
     WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo
     AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
     AND date >= '${dateFrom}' AND date <= '${dateTo}'
@@ -256,7 +256,7 @@ app.post('/api/guest_view_receipt', function (req, res) {
     const appointmentNo = req.body.appointmentNo
 
     conn.query(`SELECT a.appointmentNo, c.name as clientName,  a.date, b.location, SUM(ser.price) as totalPayment
-                FROM  services ser, client c, appointments a, branches b, serciveAppointment sa
+                FROM  services ser, clients c, appointments a, branches b, serciveAppointment sa
                 WHERE ser.serviceType=sa.serviceType AND a.appointmentNo = sa.appointmentNo AND a.appointmentNo = ${appointmentNo}  AND a.clientNo = c.clientNo AND a.branchNo = b.branchNo
                 GROUP BY a.appointmentNo 
                 ORDER BY a.appointmentNo;`,
