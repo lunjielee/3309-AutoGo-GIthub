@@ -37,7 +37,7 @@ export default function StaffSingup() {
   return (
     <div class="row align-items-center w-25 m-auto">
       <h2>
-        Welcome <small class="text-muted">New staff</small>
+        Welcome <small class="text-muted">New Staff</small>
       </h2>
       <form>
         <div class="form-floating mb-3">

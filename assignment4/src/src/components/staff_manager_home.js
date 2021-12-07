@@ -6,7 +6,7 @@ export default function StaffManagerHome() {
 
     return (
         <div>
-            <h2>Manager Home page</h2>
+            <h2>Hi! <small class="text-muted">{localStorage.getItem('currentUser')}</small> Welcome to Manager Home page</h2>
             <div class="mt-3">
                 <button onClick={() => { nav('/staff-view-branchRevenue') }} id='staff-home-btn-1' class="btn btn-primary" type="button">View Branch Revenue</button>
             </div>

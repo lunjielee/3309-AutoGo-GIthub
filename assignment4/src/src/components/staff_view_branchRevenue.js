@@ -25,7 +25,7 @@ export default function StaffViewBranchRevenue() {
 
     return (
         <div>
-            <h2>Staff View Branch Monthly Revenue Page</h2>
+            <h2>View Branch Monthly Revenue Page</h2>
             <div class="mt-3">
                 <button onClick={() => { nav(-1) }} id='staff-view-btn-1' class="btn btn-primary" type="button">Back to Home Page</button>
             </div>

@@ -42,11 +42,10 @@ app.post('/api/add_appointment', function (req, res) {
                         ,
                         (error, rows, fields) => {
                             if (error) {
-                                conn.end()
                                 console.log(error);
+                                conn.end()
                             }
                             else {
-                                conn.end()
                                 console.log('INSERT service1 SUCCESS')
                             }
                         })
@@ -56,12 +55,11 @@ app.post('/api/add_appointment', function (req, res) {
                         ,
                         (error, rows, fields) => {
                             if (error) {
-                                conn.end()
                                 console.log(error);
+                                conn.end()
                             }
                             else {
                                 console.log('INSERT service2 SUCCESS')
-                                conn.end()
                             }
                         })
                 }
@@ -70,11 +68,10 @@ app.post('/api/add_appointment', function (req, res) {
                         ,
                         (error, rows, fields) => {
                             if (error) {
-                                conn.end()
                                 console.log(error);
+                                conn.end()
                             }
                             else {
-                                conn.end()
                                 console.log('INSERT service3 SUCCESS')
                             }
                         })
@@ -84,12 +81,12 @@ app.post('/api/add_appointment', function (req, res) {
                         ,
                         (error, rows, fields) => {
                             if (error) {
-                                conn.end()
                                 console.log(error);
+                                conn.end()
                             }
                             else {
-                                conn.end()
                                 console.log('INSERT service4 SUCCESS')
+                                conn.end()
                             }
                         })
                 }
@@ -228,7 +225,7 @@ app.post('/api/guest_register_car', function (req, res) {
     const color = req.body.color;
     const clientNo = req.body.clientNo;
 
-    conn.query("INSERT INTO cars (`licensePLate`, `model`, `make`, `color`, `clientNo`) VALUES (?,?,?,?,?)",[licensePlate,model,make,color,clientNo],
+    conn.query("INSERT INTO cars (`licensePLate`, `model`, `make`, `color`, `clientNo`) VALUES (?,?,?,?,?)", [licensePlate, model, make, color, clientNo],
         (error, rows, fields) => {
             if (error) {
                 conn.end()
@@ -238,6 +235,23 @@ app.post('/api/guest_register_car', function (req, res) {
                 res.send("success");
             }
         })
+})
+
+app.post('/api/guest_get_all_car', function (req, res) {
+    conn = newConnection();
+    conn.connect();
+
+    const clientNo = req.body.clientNo
+    conn.query(`SELECT licensePLate, model, make, color FROM cars WHERE clientNo='${clientNo}'`, (error, rows) => {
+        if (error) {
+            conn.end()
+            console.log(error);
+        } else {
+            conn.end()
+            res.send(rows);
+        }
+    })
+
 })
 
 app.post('/api/guest_find_item', function (req, res) {

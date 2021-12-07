@@ -5,12 +5,12 @@ export default function GuestHome() {
     const nav = useNavigate()
     return (
         <div>
-            <h2>Guest Home page</h2>
+            <h2>Hi! <small class="text-muted">{localStorage.getItem('currentUser')}</small> Guest Home page</h2>
             <div class="mt-3">
                 <button onClick={() => { nav('/guest-view-appointment') }} id='guest-home-btn-1' class="btn btn-primary" type="button">View My Appointments</button>
             </div>
             <div class="mt-3">
-                <button onClick={() => { nav('/add-appointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Book a Appointment</button>
+                <button onClick={() => { nav('/add-appointment') }} id='guest-home-btn-2' class="btn btn-primary" type="button">Book a Appointment (Register Your Car First)</button>
             </div>
             <div class="mt-3">
                 <button onClick={() => { nav('/guest-find-item') }} id='guest-home-btn-3' class="btn btn-primary" type="button">Search Accessory</button>
